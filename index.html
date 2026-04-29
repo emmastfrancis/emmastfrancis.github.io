@@ -1,5 +1,969 @@
 <!DOCTYPE html>
-<html>
-<head><title>Hello World</title></head>
-<body><h1>Hello World!</h1></body>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Emma St Francis — Sociologist</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=IM+Fell+English:ital@0;1&family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --ink:       #1a1612;
+      --paper:     #f0ead8;
+      --cream:     #e8dfc8;
+      --gold:      #a8884a;
+      --gold-dim:  #7a6235;
+      --sepia:     #5c4a2a;
+      --rust:      #8b4a2a;
+      --moss:      #3a4a32;
+      --muted:     #9a8e7a;
+      --rule:      rgba(168,136,74,0.3);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--ink);
+      color: var(--cream);
+      font-family: 'Crimson Text', Georgia, serif;
+      font-size: 18px;
+      line-height: 1.75;
+      cursor: default;
+      overflow-x: hidden;
+    }
+
+    /* ── Grain overlay ── */
+    body::before {
+      content: '';
+      position: fixed; inset: 0; z-index: 9999;
+      pointer-events: none;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+      opacity: 0.35;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 1.4rem 3.5rem;
+      background: linear-gradient(to bottom, rgba(26,22,18,0.97), rgba(26,22,18,0));
+      backdrop-filter: blur(2px);
+    }
+
+    .nav-name {
+      font-family: 'IM Fell English', serif;
+      font-size: 1.05rem;
+      letter-spacing: 0.04em;
+      color: var(--gold);
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex; gap: 2.5rem; list-style: none;
+    }
+
+    .nav-links a {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.88rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.3s;
+      position: relative;
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute; bottom: -3px; left: 0; right: 0;
+      height: 1px; background: var(--gold);
+      transform: scaleX(0); transform-origin: left;
+      transition: transform 0.3s;
+    }
+
+    .nav-links a:hover { color: var(--gold); }
+    .nav-links a:hover::after { transform: scaleX(1); }
+
+    /* Hamburger for mobile */
+    .nav-toggle { display: none; background: none; border: none; cursor: pointer; color: var(--gold); font-size: 1.5rem; }
+
+    /* ── HERO ── */
+    #home {
+      min-height: 100vh;
+      display: flex; flex-direction: column; justify-content: center;
+      padding: 8rem 3.5rem 5rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-bg {
+      position: absolute; inset: 0; z-index: 0;
+      background:
+        radial-gradient(ellipse 60% 80% at 80% 50%, rgba(58,74,50,0.18) 0%, transparent 70%),
+        radial-gradient(ellipse 50% 60% at 10% 80%, rgba(92,74,42,0.15) 0%, transparent 60%),
+        radial-gradient(ellipse 40% 40% at 50% 10%, rgba(139,74,42,0.08) 0%, transparent 60%);
+    }
+
+    .hero-rule {
+      width: 3px; height: 80px;
+      background: linear-gradient(to bottom, transparent, var(--gold), transparent);
+      margin-bottom: 2.5rem;
+      position: relative; z-index: 1;
+    }
+
+    .hero-eyebrow {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.82rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1.2rem;
+      position: relative; z-index: 1;
+      animation: fadeUp 1s ease both;
+    }
+
+    h1 {
+      font-family: 'IM Fell English', serif;
+      font-size: clamp(3rem, 7vw, 6rem);
+      font-weight: 400;
+      line-height: 1.08;
+      color: var(--paper);
+      max-width: 14ch;
+      position: relative; z-index: 1;
+      animation: fadeUp 1s 0.15s ease both;
+    }
+
+    h1 em {
+      font-style: italic;
+      color: var(--gold);
+    }
+
+    .hero-sub {
+      font-family: 'Crimson Text', serif;
+      font-size: 1.15rem;
+      font-style: italic;
+      color: var(--muted);
+      max-width: 52ch;
+      margin-top: 1.8rem;
+      position: relative; z-index: 1;
+      animation: fadeUp 1s 0.3s ease both;
+    }
+
+    .hero-cta {
+      margin-top: 3rem;
+      position: relative; z-index: 1;
+      animation: fadeUp 1s 0.45s ease both;
+    }
+
+    .btn {
+      display: inline-block;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.85rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 0.85rem 2.2rem;
+      border: 1px solid var(--gold);
+      color: var(--gold);
+      transition: background 0.3s, color 0.3s;
+    }
+
+    .btn:hover {
+      background: var(--gold);
+      color: var(--ink);
+    }
+
+    .btn-ghost {
+      border-color: var(--sepia);
+      color: var(--muted);
+      margin-left: 1rem;
+    }
+
+    .btn-ghost:hover {
+      background: var(--sepia);
+      color: var(--cream);
+    }
+
+    .scroll-hint {
+      position: absolute; bottom: 2.5rem; left: 3.5rem;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.75rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--sepia);
+      display: flex; align-items: center; gap: 1rem;
+      z-index: 1;
+    }
+
+    .scroll-hint::before {
+      content: '';
+      display: block; width: 40px; height: 1px;
+      background: var(--sepia);
+    }
+
+    /* ── SECTION SHARED ── */
+    section {
+      padding: 7rem 3.5rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .section-label {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.78rem;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.8rem;
+      display: flex; align-items: center; gap: 1.2rem;
+    }
+
+    .section-label::after {
+      content: '';
+      flex: 1; max-width: 80px; height: 1px;
+      background: var(--rule);
+    }
+
+    h2 {
+      font-family: 'IM Fell English', serif;
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 400;
+      line-height: 1.2;
+      color: var(--paper);
+      margin-bottom: 2rem;
+    }
+
+    h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.35rem;
+      font-weight: 600;
+      color: var(--paper);
+      margin-bottom: 0.5rem;
+    }
+
+    p { color: var(--cream); margin-bottom: 1.2rem; }
+    p:last-child { margin-bottom: 0; }
+
+    .divider {
+      width: 100%; height: 1px;
+      background: linear-gradient(to right, transparent, var(--rule), transparent);
+      margin: 0;
+    }
+
+    /* ── ABOUT ── */
+    #about { padding-top: 8rem; }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 300px 1fr;
+      gap: 5rem;
+      align-items: start;
+      margin-top: 3rem;
+    }
+
+    .photo-frame {
+      position: relative;
+    }
+
+    .photo-frame::before {
+      content: '';
+      position: absolute;
+      top: 12px; left: 12px;
+      right: -12px; bottom: -12px;
+      border: 1px solid var(--gold-dim);
+      z-index: 0;
+    }
+
+    .photo-wrap {
+      position: relative; z-index: 1;
+      width: 100%; aspect-ratio: 3/4;
+      background: #2a2218;
+      border: 1px solid var(--sepia);
+      overflow: hidden;
+      display: flex; align-items: center; justify-content: center;
+      flex-direction: column; gap: 1rem;
+      cursor: pointer;
+    }
+
+    .photo-wrap img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      display: none;
+    }
+
+    .photo-placeholder {
+      text-align: center;
+      padding: 2rem;
+    }
+
+    .photo-placeholder svg {
+      opacity: 0.3; margin-bottom: 1rem;
+    }
+
+    .photo-placeholder p {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.8rem;
+      letter-spacing: 0.1em;
+      color: var(--sepia);
+      text-transform: uppercase;
+    }
+
+    .photo-upload-input { display: none; }
+
+    .about-text blockquote {
+      font-family: 'IM Fell English', serif;
+      font-size: 1.5rem;
+      font-style: italic;
+      color: var(--gold);
+      border-left: 2px solid var(--gold);
+      padding-left: 1.5rem;
+      margin: 2rem 0;
+      line-height: 1.5;
+    }
+
+    /* ── RESEARCH ── */
+    #research { background: none; }
+
+    .papers-list { margin-top: 3rem; }
+
+    .paper-item {
+      display: grid;
+      grid-template-columns: 60px 1fr;
+      gap: 1.5rem;
+      padding: 2rem 0;
+      border-bottom: 1px solid var(--rule);
+      transition: background 0.2s;
+    }
+
+    .paper-item:first-child { border-top: 1px solid var(--rule); }
+
+    .paper-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.75rem;
+      letter-spacing: 0.15em;
+      color: var(--gold);
+      padding-top: 0.3rem;
+    }
+
+    .paper-meta {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.82rem;
+      color: var(--muted);
+      margin-bottom: 0.5rem;
+      letter-spacing: 0.08em;
+    }
+
+    .paper-title {
+      font-family: 'IM Fell English', serif;
+      font-size: 1.2rem;
+      color: var(--paper);
+      margin-bottom: 0.6rem;
+      line-height: 1.3;
+    }
+
+    .paper-abstract {
+      font-size: 0.95rem;
+      color: var(--muted);
+      line-height: 1.6;
+      margin-bottom: 1rem;
+    }
+
+    .paper-link {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.78rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gold);
+      text-decoration: none;
+      border-bottom: 1px solid var(--rule);
+      padding-bottom: 1px;
+      transition: border-color 0.2s;
+    }
+
+    .paper-link:hover { border-color: var(--gold); }
+
+    .paper-placeholder {
+      font-style: italic;
+      color: var(--sepia);
+      font-size: 1rem;
+      margin-top: 2rem;
+    }
+
+    /* ── PODCAST ── */
+    #podcast {
+      background: #141108;
+      max-width: 100%;
+      padding: 7rem 0;
+    }
+
+    #podcast .inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 3.5rem;
+    }
+
+    .podcast-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      margin-top: 3rem;
+      align-items: center;
+    }
+
+    .podcast-cover {
+      aspect-ratio: 1;
+      background: #1e1a12;
+      border: 1px solid var(--sepia);
+      display: flex; align-items: center; justify-content: center;
+      flex-direction: column; gap: 1rem;
+      padding: 3rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .podcast-cover::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse at center, rgba(168,136,74,0.08) 0%, transparent 70%);
+    }
+
+    .podcast-icon {
+      width: 64px; height: 64px;
+      border: 2px solid var(--gold);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto;
+      position: relative; z-index: 1;
+    }
+
+    .podcast-icon svg { color: var(--gold); }
+
+    .podcast-cover-title {
+      font-family: 'IM Fell English', serif;
+      font-size: 1.6rem;
+      font-style: italic;
+      color: var(--paper);
+      position: relative; z-index: 1;
+    }
+
+    .podcast-cover-sub {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.8rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      position: relative; z-index: 1;
+    }
+
+    .social-links {
+      display: flex; flex-direction: column; gap: 1rem;
+      margin-top: 2rem;
+    }
+
+    .social-link {
+      display: flex; align-items: center; gap: 1rem;
+      padding: 1rem 1.5rem;
+      border: 1px solid var(--rule);
+      text-decoration: none;
+      color: var(--cream);
+      transition: border-color 0.3s, background 0.3s;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1rem;
+      letter-spacing: 0.05em;
+    }
+
+    .social-link:hover {
+      border-color: var(--gold);
+      background: rgba(168,136,74,0.05);
+    }
+
+    .social-link-label {
+      font-size: 0.75rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    /* ── CV ── */
+    #cv {
+      text-align: center;
+      padding: 7rem 3.5rem;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .cv-ornament {
+      font-family: 'IM Fell English', serif;
+      font-size: 3rem;
+      color: var(--gold-dim);
+      opacity: 0.5;
+      margin-bottom: 1.5rem;
+      line-height: 1;
+    }
+
+    #cv p {
+      color: var(--muted);
+      font-style: italic;
+      margin-bottom: 2.5rem;
+    }
+
+    /* ── CONTACT ── */
+    #contact { max-width: 700px; }
+
+    .contact-form {
+      margin-top: 3rem;
+      display: flex; flex-direction: column; gap: 1.5rem;
+    }
+
+    .form-group { display: flex; flex-direction: column; gap: 0.5rem; }
+
+    .form-group label {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.78rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+      background: #1e1a12;
+      border: 1px solid var(--sepia);
+      color: var(--cream);
+      font-family: 'Crimson Text', serif;
+      font-size: 1rem;
+      padding: 0.85rem 1rem;
+      outline: none;
+      transition: border-color 0.3s;
+      resize: vertical;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus,
+    .form-group select:focus {
+      border-color: var(--gold);
+    }
+
+    .form-group textarea { min-height: 140px; }
+
+    .form-group select option { background: #1e1a12; }
+
+    .form-note {
+      font-style: italic;
+      font-size: 0.95rem;
+      color: var(--muted) !important;
+    }
+
+    .form-submit {
+      display: flex; justify-content: flex-start; gap: 1.5rem;
+      align-items: center;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      padding: 3rem 3.5rem;
+      border-top: 1px solid var(--rule);
+      display: flex; justify-content: space-between; align-items: center;
+    }
+
+    .footer-name {
+      font-family: 'IM Fell English', serif;
+      font-size: 0.95rem;
+      color: var(--sepia);
+    }
+
+    .footer-note {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.78rem;
+      letter-spacing: 0.1em;
+      color: var(--sepia);
+    }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .fade-in {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ── MOBILE ── */
+    @media (max-width: 768px) {
+      nav { padding: 1.2rem 1.5rem; }
+      .nav-links { display: none; flex-direction: column; position: absolute; top: 100%; left: 0; right: 0; background: rgba(26,22,18,0.97); padding: 1.5rem; gap: 1.5rem; }
+      .nav-links.open { display: flex; }
+      .nav-toggle { display: block; }
+      section { padding: 5rem 1.5rem; }
+      #home { padding: 7rem 1.5rem 4rem; }
+      .about-grid { grid-template-columns: 1fr; gap: 3rem; }
+      .photo-frame { max-width: 260px; }
+      .podcast-grid { grid-template-columns: 1fr; }
+      footer { flex-direction: column; gap: 1rem; text-align: center; }
+    }
+
+    /* Notice banner */
+    .edit-notice {
+      background: rgba(168,136,74,0.1);
+      border: 1px solid var(--gold-dim);
+      padding: 0.6rem 1.2rem;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.82rem;
+      color: var(--gold);
+      letter-spacing: 0.05em;
+      text-align: center;
+      position: relative; z-index: 10;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Edit notice: remove this once the site is live -->
+  <div class="edit-notice">
+    ✦ Editing mode — replace placeholder text and upload your photo below ✦
+  </div>
+
+  <!-- NAV -->
+  <nav>
+    <a href="#home" class="nav-name">Emma St Francis</a>
+    <button class="nav-toggle" onclick="document.querySelector('.nav-links').classList.toggle('open')">☰</button>
+    <ul class="nav-links">
+      <li><a href="#about" onclick="this.closest('.nav-links').classList.remove('open')">About</a></li>
+      <li><a href="#research" onclick="this.closest('.nav-links').classList.remove('open')">Research</a></li>
+      <li><a href="#podcast" onclick="this.closest('.nav-links').classList.remove('open')">Podcast</a></li>
+      <li><a href="#cv" onclick="this.closest('.nav-links').classList.remove('open')">CV</a></li>
+      <li><a href="#contact" onclick="this.closest('.nav-links').classList.remove('open')">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section id="home" style="max-width:100%; padding-left:3.5rem; padding-right:3.5rem;">
+    <div class="hero-bg"></div>
+    <div class="hero-rule"></div>
+    <p class="hero-eyebrow">Sociologist · PhD Candidate</p>
+    <h1>On the <em>rites</em> of passage</h1>
+    <p class="hero-sub">
+      Studying the liminal moments that define a human life — and the professions 
+      called to shepherd us through them.
+    </p>
+    <div class="hero-cta">
+      <a href="#about" class="btn">About My Work</a>
+      <a href="#research" class="btn btn-ghost">Read the Research</a>
+    </div>
+    <p class="scroll-hint">Scroll to explore</p>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <p class="section-label">About</p>
+    <h2>The sociology of <em>thresholds</em></h2>
+    <div class="about-grid">
+
+      <div class="photo-frame">
+        <!-- TO ADD YOUR PHOTO: click the box below to upload,
+             or replace "photo-placeholder" with <img src="yourphoto.jpg"> -->
+        <div class="photo-wrap" onclick="document.getElementById('photo-upload').click()" title="Click to upload your photo">
+          <div class="photo-placeholder" id="photo-placeholder">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1">
+              <rect x="3" y="3" width="18" height="18" rx="1"/>
+              <circle cx="8.5" cy="8.5" r="1.5"/>
+              <polyline points="21 15 16 10 5 21"/>
+            </svg>
+            <p>Click to upload<br/>your photograph</p>
+          </div>
+          <img id="profile-img" src="" alt="Emma St Francis" />
+        </div>
+        <input type="file" id="photo-upload" class="photo-upload-input" accept="image/*" onchange="loadPhoto(event)" />
+      </div>
+
+      <div class="about-text">
+        <p>
+          I am a PhD candidate in Sociology at [Your University], where I study the 
+          transitional moments that punctuate the human lifespan — birth, illness, 
+          coming-of-age, death — and the professional figures who stand at those thresholds 
+          alongside us.
+        </p>
+
+        <blockquote>
+          "Every life is a series of crossings. My work asks: who holds the lamp?"
+        </blockquote>
+
+        <p>
+          My research sits at the intersection of the sociology of professions, the 
+          anthropology of ritual, and the sociology of death and dying. I am particularly 
+          interested in how midwives, doulas, hospice workers, and clergy negotiate 
+          authority, meaning, and care at the edges of existence.
+        </p>
+        <p>
+          Before beginning my doctorate, I [your background — undergraduate degree, 
+          prior work, relevant experiences]. I am based at [location/university].
+        </p>
+        <p>
+          I am currently conducting [fieldwork / interviews / archival research] on 
+          [your specific project]. I welcome inquiries from potential interview participants 
+          and fellow researchers.
+        </p>
+        <p style="font-style:italic; color: var(--muted);">
+          <!-- Add your institutional affiliation or lab here -->
+          Department of Sociology · [University] · Expected graduation [year]
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- RESEARCH -->
+  <section id="research">
+    <p class="section-label">Research</p>
+    <h2>Papers &amp; Writing</h2>
+
+    <div class="papers-list">
+
+      <!-- PAPER TEMPLATE — duplicate this block for each paper -->
+      <div class="paper-item fade-in">
+        <div class="paper-num">01</div>
+        <div>
+          <p class="paper-meta">2024 · [Journal Name] · Under Review</p>
+          <p class="paper-title">[Your Paper Title Goes Here]</p>
+          <p class="paper-abstract">
+            A brief abstract or summary of the paper. What is the central argument? 
+            What methods did you use? What is the contribution to the field? Two or 
+            three sentences is ideal for this context.
+          </p>
+          <!-- Replace # with the actual PDF path, e.g. href="papers/stfrancis-2024.pdf" -->
+          <a href="#" class="paper-link">Download PDF ↓</a>
+        </div>
+      </div>
+
+      <div class="paper-item fade-in">
+        <div class="paper-num">02</div>
+        <div>
+          <p class="paper-meta">2023 · Working Paper</p>
+          <p class="paper-title">[Second Paper or Conference Presentation]</p>
+          <p class="paper-abstract">
+            Abstract or summary of your second piece of writing. 
+            Conference papers, essays, and works in progress are all welcome here.
+          </p>
+          <a href="#" class="paper-link">Download PDF ↓</a>
+        </div>
+      </div>
+      <!-- END PAPER TEMPLATE -->
+
+    </div>
+
+    <p class="paper-placeholder fade-in">
+      Additional papers and working documents forthcoming. 
+      Contact me for pre-publication drafts.
+    </p>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- PODCAST -->
+  <div id="podcast">
+    <div class="inner">
+      <p class="section-label">Podcast</p>
+      <h2>The Liminal Hour</h2>
+
+      <div class="podcast-grid">
+        <div class="podcast-cover">
+          <div class="podcast-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <circle cx="12" cy="12" r="10"/>
+              <circle cx="12" cy="12" r="3"/>
+              <line x1="12" y1="2" x2="12" y2="5"/>
+              <line x1="12" y1="19" x2="12" y2="22"/>
+            </svg>
+          </div>
+          <!-- Replace "The Liminal Hour" with your actual podcast name -->
+          <p class="podcast-cover-title">The Liminal Hour</p>
+          <p class="podcast-cover-sub">[Your Podcast Tagline]</p>
+        </div>
+
+        <div>
+          <p>
+            [Podcast description — what is this show about? Who do you interview? 
+            What questions does it explore? Write 2–3 sentences here.]
+          </p>
+          <p>
+            Each episode sits with someone whose work takes place at the edge of 
+            a life — a beginning or an end — and asks what that threshold feels like 
+            from the inside.
+          </p>
+
+          <div class="social-links fade-in">
+            <!-- Replace # with your actual links -->
+            <a href="#" class="social-link" target="_blank" rel="noopener">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <rect x="2" y="2" width="20" height="20" rx="5"/>
+                <circle cx="12" cy="12" r="5"/>
+                <circle cx="17.5" cy="6.5" r="0.5" fill="currentColor"/>
+              </svg>
+              <div>
+                <p class="social-link-label">Instagram</p>
+                <p style="margin:0;">@[yourhandle]</p>
+              </div>
+            </a>
+
+            <a href="#" class="social-link" target="_blank" rel="noopener">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M12 2a10 10 0 100 20 10 10 0 000-20z"/>
+                <path d="M8.56 2.75c4.37 6.03 6.02 9.42 8.03 17.72m2.54-15.38c-3.72 4.35-8.94 5.66-16.88 5.85m19.5 1.9c-3.5-.93-6.63-.82-8.94 0-2.58.92-5.01 2.86-7.44 6.32"/>
+              </svg>
+              <div>
+                <p class="social-link-label">Podcast</p>
+                <p style="margin:0;">Listen on [Platform]</p>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- CV -->
+  <section id="cv" style="max-width:100%;">
+    <div style="max-width:700px; margin:0 auto; text-align:center;">
+      <p class="section-label" style="justify-content:center;">Curriculum Vitae</p>
+      <div class="cv-ornament">✦</div>
+      <h2 style="font-size:2rem;">Emma St Francis</h2>
+      <p>
+        My full curriculum vitae includes my educational history, publications, 
+        conference presentations, teaching experience, and service. 
+        Updated [month, year].
+      </p>
+      <!-- Replace cv.pdf with the actual filename you upload to your repo -->
+      <a href="cv.pdf" class="btn" download>Download CV (PDF) ↓</a>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <p class="section-label">Contact</p>
+    <h2>Get in touch</h2>
+    <p>
+      I welcome messages from fellow researchers, potential collaborators, journalists, 
+      and those interested in participating in my research. Please feel free to reach out.
+    </p>
+
+    <!-- This form uses Formspree — free for basic use. Replace YOUR_FORM_ID below.
+         Sign up at formspree.io, create a form, and paste your endpoint URL. -->
+    <form class="contact-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:1.5rem;">
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input type="text" id="name" name="name" placeholder="Your name" required />
+        </div>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" placeholder="your@email.com" required />
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="affiliation">Affiliation</label>
+        <input type="text" id="affiliation" name="affiliation" placeholder="University, organization, or independent" />
+      </div>
+
+      <div class="form-group">
+        <label for="reason">Reason for reaching out</label>
+        <select id="reason" name="reason">
+          <option value="">Select one...</option>
+          <option>Research collaboration</option>
+          <option>Interview participation</option>
+          <option>Podcast inquiry</option>
+          <option>Media or press</option>
+          <option>General correspondence</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="message">Message</label>
+        <textarea id="message" name="message" placeholder="Your message..." required></textarea>
+      </div>
+
+      <p class="form-note">
+        I aim to respond within one week. For urgent inquiries, you may reach me 
+        directly at [your.email@university.edu].
+      </p>
+
+      <div class="form-submit">
+        <button type="submit" class="btn">Send Message</button>
+      </div>
+    </form>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p class="footer-name">Emma St Francis</p>
+    <p class="footer-note">PhD Candidate · Sociology · [University] · [Year]</p>
+  </footer>
+
+  <script>
+    // Photo upload
+    function loadPhoto(event) {
+      const file = event.target.files[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = e => {
+        const img = document.getElementById('profile-img');
+        img.src = e.target.result;
+        img.style.display = 'block';
+        document.getElementById('photo-placeholder').style.display = 'none';
+      };
+      reader.readAsDataURL(file);
+    }
+
+    // Scroll fade-in
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+    // Smooth nav active state
+    const sections = document.querySelectorAll('section[id], div[id]');
+    const navLinks = document.querySelectorAll('.nav-links a');
+
+    window.addEventListener('scroll', () => {
+      let current = '';
+      sections.forEach(section => {
+        if (window.scrollY >= section.offsetTop - 120) {
+          current = section.getAttribute('id');
+        }
+      });
+      navLinks.forEach(link => {
+        link.style.color = link.getAttribute('href') === '#' + current
+          ? 'var(--gold)' : '';
+      });
+    });
+  </script>
+
+</body>
 </html>
