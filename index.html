@@ -6,56 +6,62 @@
   <title>Emma Nelson — Sociologist</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=IM+Fell+English:ital@0;1&family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
 
   <style>
     /* ─────────────────────────────────────────────
-       DARK — inspired by Image 2 (Comete Lucenti):
-       velvet black, luminous parchment, ochre-gold
+       DARK — deep navy (Image 3), transit-line accents (Images 1 & 2)
     ───────────────────────────────────────────── */
     :root,
     [data-theme="dark"] {
-      --bg:         #080705;
-      --surface:    #111009;
-      --surface2:   #161410;
-      --text:       #e2d7be;
-      --muted:      #7a6f58;
-      --dim:        #3e3628;
-      --accent:     #c49a4a;
-      --accent-dim: #7a6028;
-      --accent2:    #6a8a9a;
-      --rule:       rgba(196,154,74,0.2);
-      --rule2:      rgba(196,154,74,0.08);
-      --glow:       rgba(196,154,74,0.06);
-      --nav-bg:     rgba(8,7,5,0.93);
-      --form-bg:    #111009;
-      --border:     rgba(196,154,74,0.22);
-      --paper:      #e2d7be;
-      --ink:        #080705;
+      --bg:         #0d1117;
+      --surface:    #141a23;
+      --surface2:   #111520;
+      --text:       #e8eaf0;
+      --muted:      #7a8499;
+      --dim:        #3a4255;
+      --accent:     #e8b84b;      /* ochre — Image 3 golden stripe */
+      --accent-dim: #7a5f20;
+      --accent2:    #4fa8c4;      /* teal — transit line */
+      --line-red:   #c0392b;
+      --line-teal:  #4fa8c4;
+      --line-gold:  #e8b84b;
+      --line-olive: #7a8a4a;
+      --rule:       rgba(232,184,75,0.18);
+      --rule2:      rgba(232,184,75,0.07);
+      --glow:       rgba(79,168,196,0.05);
+      --nav-bg:     rgba(13,17,23,0.96);
+      --form-bg:    #0d1117;
+      --border:     rgba(232,184,75,0.2);
+      --paper:      #e8eaf0;
+      --ink:        #0d1117;
     }
 
     /* ─────────────────────────────────────────────
-       LIGHT — inspired by Image 1 (folk-art wash):
-       watercolour sky-blue, parchment panels, ink
+       LIGHT — off-white ground, same line palette
     ───────────────────────────────────────────── */
     [data-theme="light"] {
-      --bg:         #d8e6ed;
-      --surface:    #eee6d2;
-      --surface2:   #e6dcc6;
-      --text:       #1a1610;
-      --muted:      #5a4f3a;
-      --dim:        #9a8e78;
-      --accent:     #8b6820;
-      --accent-dim: #c49a4a;
-      --accent2:    #3a6070;
-      --rule:       rgba(139,104,32,0.28);
-      --rule2:      rgba(139,104,32,0.1);
-      --glow:       rgba(139,104,32,0.06);
-      --nav-bg:     rgba(216,230,237,0.95);
-      --form-bg:    #e6dcc6;
-      --border:     rgba(139,104,32,0.28);
-      --paper:      #1a1610;
-      --ink:        #eee6d2;
+      --bg:         #f4f2ec;
+      --surface:    #eceae2;
+      --surface2:   #e6e2d8;
+      --text:       #18191e;
+      --muted:      #5a6070;
+      --dim:        #aaa89e;
+      --accent:     #b8860b;
+      --accent-dim: #d4a830;
+      --accent2:    #2a7a99;
+      --line-red:   #a0251b;
+      --line-teal:  #2a7a99;
+      --line-gold:  #b8860b;
+      --line-olive: #5a6a28;
+      --rule:       rgba(184,134,11,0.25);
+      --rule2:      rgba(184,134,11,0.1);
+      --glow:       rgba(42,122,153,0.06);
+      --nav-bg:     rgba(244,242,236,0.96);
+      --form-bg:    #eceae2;
+      --border:     rgba(184,134,11,0.25);
+      --paper:      #18191e;
+      --ink:        #f4f2ec;
     }
 
     /* ─── RESET ─── */
@@ -65,137 +71,144 @@
     body {
       background: var(--bg);
       color: var(--text);
-      font-family: 'Crimson Text', Georgia, serif;
-      font-size: 17px;
-      line-height: 1.8;
+      font-family: 'Inter', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      font-size: 16px;
+      line-height: 1.75;
       overflow-x: hidden;
       transition: background 0.4s, color 0.4s;
-    }
-
-    /* Aged paper grain */
-    body::after {
-      content: '';
-      position: fixed; inset: 0; z-index: 9000;
-      pointer-events: none; opacity: 0.18;
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.88' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)'/%3E%3C/svg%3E");
     }
 
     /* ─── NAV ─── */
     nav {
       position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
       display: flex; justify-content: space-between; align-items: center;
-      padding: 1rem 3rem;
+      padding: 0 3rem;
+      height: 54px;
       background: var(--nav-bg);
-      backdrop-filter: blur(10px);
-      border-bottom: 1px solid var(--rule2);
+      border-bottom: 3px solid var(--line-red);
       transition: background 0.4s, border-color 0.4s;
     }
 
     .nav-name {
-      font-family: 'IM Fell English', serif;
-      font-size: 0.98rem; color: var(--accent);
-      text-decoration: none; letter-spacing: 0.02em;
+      font-family: 'Space Grotesk', 'Helvetica Neue', Helvetica, sans-serif;
+      font-size: 0.82rem; font-weight: 600;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--text);
+      text-decoration: none;
     }
 
     .nav-right { display: flex; align-items: center; gap: 1.8rem; }
 
-    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links { display: flex; gap: 0; list-style: none; }
 
     .nav-links a {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 0.8rem; letter-spacing: 0.18em;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.72rem; font-weight: 500;
+      letter-spacing: 0.14em;
       text-transform: uppercase; color: var(--muted);
-      text-decoration: none; transition: color 0.25s;
+      text-decoration: none;
+      padding: 0 1.2rem;
+      height: 54px; display: flex; align-items: center;
+      border-left: 1px solid var(--rule2);
+      transition: color 0.2s, background 0.2s;
     }
 
-    .nav-links a:hover { color: var(--accent); }
+    .nav-links a:hover { color: var(--text); background: var(--glow); }
+    .nav-links li:last-child a { border-right: 1px solid var(--rule2); }
 
     .theme-toggle {
-      background: none; border: 1px solid var(--rule);
-      width: 34px; height: 34px; border-radius: 50%;
+      background: none; border: 1px solid var(--dim);
+      width: 32px; height: 32px;
       cursor: pointer; display: flex; align-items: center; justify-content: center;
-      color: var(--accent); flex-shrink: 0;
-      transition: border-color 0.3s, background 0.3s;
+      color: var(--muted); flex-shrink: 0;
+      transition: border-color 0.3s, color 0.3s;
     }
 
-    .theme-toggle:hover { background: var(--glow); border-color: var(--accent); }
+    .theme-toggle:hover { color: var(--text); border-color: var(--accent); }
 
     [data-theme="dark"]  .icon-sun  { display: none; }
     [data-theme="dark"]  .icon-moon { display: block; }
     [data-theme="light"] .icon-moon { display: none; }
     [data-theme="light"] .icon-sun  { display: block; }
 
-    .nav-toggle { display: none; background: none; border: none; cursor: pointer; color: var(--accent); font-size: 1.3rem; }
+    .nav-toggle { display: none; background: none; border: none; cursor: pointer; color: var(--text); font-size: 1.2rem; }
 
-    /* ─── HERO (gap fixed) ─── */
+    /* ─── HERO ─── */
     #home {
-      padding: 5.5rem 3rem 4.5rem;
+      padding: 5.5rem 3rem 5rem;
       position: relative; overflow: hidden;
+      border-bottom: 1px solid var(--rule2);
     }
 
+    /* Transit-line stripes — signature element from Images 1 & 2 */
     .hero-bg {
       position: absolute; inset: 0; z-index: 0; pointer-events: none;
     }
 
     [data-theme="dark"] .hero-bg {
       background:
-        radial-gradient(ellipse 55% 65% at 80% 55%, rgba(100,140,160,0.11) 0%, transparent 65%),
-        radial-gradient(ellipse 40% 50% at 15% 80%, rgba(196,154,74,0.06) 0%, transparent 60%);
+        linear-gradient(180deg, transparent 60%, rgba(13,17,23,0.6) 100%);
     }
 
-    [data-theme="light"] .hero-bg {
-      background:
-        radial-gradient(ellipse 70% 70% at 80% 50%, rgba(58,96,112,0.09) 0%, transparent 65%),
-        radial-gradient(ellipse 45% 55% at 10% 75%, rgba(139,104,32,0.07) 0%, transparent 60%);
+    /* Subway-line SVG lives inside .hero-bg */
+    .hero-lines {
+      position: absolute; inset: 0; width: 100%; height: 100%;
+      pointer-events: none; z-index: 0; opacity: 0.22;
     }
 
-    /* riveted border strip — from Image 1 golden frames */
+    /* Station-stop dot — top-left corner marker */
     .rivet-bar {
-      display: flex; align-items: center; gap: 0.6rem;
-      margin-bottom: 1.8rem; position: relative; z-index: 1;
+      display: flex; align-items: center; gap: 0;
+      margin-bottom: 2.2rem; position: relative; z-index: 1;
     }
 
     .rivet {
-      width: 7px; height: 7px; border-radius: 50%;
-      border: 1px solid var(--accent); background: var(--accent-dim); flex-shrink: 0;
+      width: 12px; height: 12px;
+      border-radius: 50%;
+      background: var(--line-red);
+      flex-shrink: 0;
     }
 
     .rivet-line {
-      height: 1px; max-width: 100px;
-      background: linear-gradient(to right, var(--accent), transparent);
+      height: 2px;
+      background: var(--line-red);
+      max-width: 60px;
     }
 
     .hero-eyebrow {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 0.76rem; letter-spacing: 0.28em;
-      text-transform: uppercase; color: var(--accent);
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.72rem; font-weight: 500;
+      letter-spacing: 0.24em;
+      text-transform: uppercase; color: var(--muted);
       position: relative; z-index: 1;
       animation: fadeUp 0.9s ease both;
     }
 
     h1 {
-      font-family: 'IM Fell English', serif;
-      font-size: clamp(2.6rem, 6.5vw, 5rem);
-      font-weight: 400; line-height: 1.1;
-      color: var(--text); max-width: 16ch;
+      font-family: 'Space Grotesk', 'Helvetica Neue', Helvetica, sans-serif;
+      font-size: clamp(2.8rem, 7vw, 5.5rem);
+      font-weight: 700; line-height: 1.0;
+      letter-spacing: -0.02em;
+      color: var(--text); max-width: 14ch;
       position: relative; z-index: 1;
-      margin-top: 0.8rem;
+      margin-top: 0.9rem;
       animation: fadeUp 0.9s 0.12s ease both;
       transition: color 0.4s;
     }
 
-    h1 em { font-style: italic; color: var(--accent); }
+    h1 em { font-style: italic; color: var(--accent); font-weight: 300; }
 
     .hero-sub {
-      font-family: 'Crimson Text', serif;
-      font-size: 1.08rem; font-style: italic;
-      color: var(--muted); max-width: 54ch;
-      margin-top: 1.3rem; position: relative; z-index: 1;
+      font-family: 'Inter', sans-serif;
+      font-size: 1rem; font-weight: 400;
+      color: var(--muted); max-width: 52ch;
+      margin-top: 1.5rem; position: relative; z-index: 1;
       animation: fadeUp 0.9s 0.22s ease both;
+      line-height: 1.7;
     }
 
     .hero-cta {
-      margin-top: 2.5rem; display: flex; gap: 1rem; flex-wrap: wrap;
+      margin-top: 2.8rem; display: flex; gap: 0.8rem; flex-wrap: wrap;
       position: relative; z-index: 1;
       animation: fadeUp 0.9s 0.34s ease both;
     }
@@ -203,262 +216,285 @@
     /* ─── BUTTONS ─── */
     .btn {
       display: inline-block;
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 0.78rem; letter-spacing: 0.2em;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.72rem; font-weight: 600;
+      letter-spacing: 0.16em;
       text-transform: uppercase; text-decoration: none;
-      padding: 0.78rem 1.9rem;
-      border: 1px solid var(--accent); color: var(--accent);
+      padding: 0.72rem 1.8rem;
+      border: 2px solid var(--accent); color: var(--accent);
       background: transparent; cursor: pointer;
-      transition: background 0.3s, color 0.3s;
+      transition: background 0.2s, color 0.2s;
     }
 
     .btn:hover { background: var(--accent); color: var(--ink); }
 
-    .btn-ghost { border-color: var(--border); color: var(--muted); }
-    .btn-ghost:hover { background: var(--surface); color: var(--text); }
+    .btn-ghost { border-color: var(--dim); color: var(--muted); }
+    .btn-ghost:hover { background: var(--surface); color: var(--text); border-color: var(--muted); }
 
     /* ─── SECTIONS ─── */
     .wrap { max-width: 1050px; margin: 0 auto; padding: 5.5rem 3rem; }
 
+    /* Section label — transit line tab style */
     .section-label {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 0.74rem; letter-spacing: 0.3em;
-      text-transform: uppercase; color: var(--accent);
-      margin-bottom: 0.6rem;
+      display: inline-flex; align-items: center; gap: 0.6rem;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.66rem; font-weight: 600;
+      letter-spacing: 0.22em;
+      text-transform: uppercase; color: var(--bg);
+      background: var(--accent);
+      padding: 0.22rem 0.7rem;
+      margin-bottom: 1.2rem;
     }
 
     h2 {
-      font-family: 'IM Fell English', serif;
-      font-size: clamp(1.8rem, 3.5vw, 2.7rem);
-      font-weight: 400; color: var(--text);
-      line-height: 1.2; margin-bottom: 2rem;
+      font-family: 'Space Grotesk', 'Helvetica Neue', Helvetica, sans-serif;
+      font-size: clamp(1.7rem, 3.2vw, 2.6rem);
+      font-weight: 700; letter-spacing: -0.02em;
+      color: var(--text);
+      line-height: 1.15; margin-bottom: 2rem;
       transition: color 0.4s;
     }
 
     p { color: var(--text); margin-bottom: 1.1rem; transition: color 0.4s; }
     p:last-child { margin-bottom: 0; }
 
-    /* Branch-line divider (from Image 1 central branch motif) */
+    /* Thin horizontal rule — transit map divider */
     .branch-rule {
-      width: 100%; overflow: hidden;
-      line-height: 0; opacity: 0.15;
+      width: 100%; height: 1px;
+      background: var(--rule2);
+      overflow: hidden; opacity: 1;
+      position: relative;
     }
 
-    .branch-rule svg { display: block; width: 100%; }
+    /* Colored segment on the divider */
+    .branch-rule::after {
+      content: '';
+      position: absolute; left: 0; top: 0; height: 1px;
+      width: 120px;
+      background: linear-gradient(to right, var(--line-teal), transparent);
+    }
 
     /* ─── ABOUT ─── */
     #about { background: var(--surface2); transition: background 0.4s; }
 
     .about-grid {
-      display: grid; grid-template-columns: 255px 1fr;
+      display: grid; grid-template-columns: 240px 1fr;
       gap: 4.5rem; align-items: start;
     }
 
     .photo-frame { position: relative; }
 
-    /* Double-border with rivet corners — from Image 1 panels */
+    /* Simple offset border — echoing transit map diagram boxes */
     .photo-frame::before {
       content: '';
-      position: absolute; top: -7px; left: -7px;
-      right: 7px; bottom: 7px;
-      border: 1px solid var(--accent-dim); opacity: 0.5; z-index: 0;
+      position: absolute; top: 6px; left: 6px;
+      right: -6px; bottom: -6px;
+      border: 2px solid var(--line-teal); opacity: 0.35; z-index: 0;
     }
 
-    .photo-frame::after {
-      content: '';
-      position: absolute; top: 7px; left: 7px;
-      right: -7px; bottom: -7px;
-      border: 1px solid var(--accent-dim); opacity: 0.3; z-index: 0;
-    }
+    .photo-frame::after { display: none; }
 
-    .rivet-corner {
-      position: absolute; z-index: 2; pointer-events: none;
-    }
-
-    .rivet-corner span {
-      position: absolute; width: 7px; height: 7px;
-      border-radius: 50%; border: 1px solid var(--accent);
-      background: var(--surface2);
-    }
-
-    .rivet-corner .tl { top: -3px; left: -3px; }
-    .rivet-corner .tr { top: -3px; right: -3px; }
-    .rivet-corner .bl { bottom: -3px; left: -3px; }
-    .rivet-corner .br { bottom: -3px; right: -3px; }
+    /* remove rivet-corner styles from old design — replaced by offset border above */
+    .rivet-corner { display: none; }
 
     .photo-wrap {
       position: relative; z-index: 1;
       width: 100%; aspect-ratio: 3/4;
       background: var(--surface);
       border: 1px solid var(--border);
-      overflow: hidden; cursor: pointer;
+      overflow: hidden;
       display: flex; align-items: center; justify-content: center;
-      flex-direction: column; gap: 0.8rem;
       transition: background 0.4s, border-color 0.4s;
     }
 
-    .photo-wrap img { width: 100%; height: 100%; object-fit: cover; display: none; }
-
-    .photo-placeholder { text-align: center; padding: 1.5rem; }
-
-    .photo-placeholder svg { opacity: 0.22; margin-bottom: 0.7rem; }
-
-    .photo-placeholder p {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 0.72rem; letter-spacing: 0.12em;
-      color: var(--dim); text-transform: uppercase;
-    }
-
-    input[type="file"] { display: none; }
+    .photo-wrap img { width: 100%; height: 100%; object-fit: cover; display: block; }
 
     .about-text blockquote {
-      font-family: 'IM Fell English', serif;
-      font-size: 1.3rem; font-style: italic;
-      color: var(--accent);
-      border-left: 2px solid var(--accent);
-      padding-left: 1.3rem; margin: 1.8rem 0;
-      line-height: 1.55;
-    }
-
-    /* ─── RESEARCH ─── */
-    .paper-item {
-      display: grid; grid-template-columns: 46px 1fr;
-      gap: 1.4rem; padding: 1.7rem 0;
-      border-bottom: 1px solid var(--rule2);
-    }
-
-    .paper-item:first-child { border-top: 1px solid var(--rule2); }
-
-    .paper-num {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 0.7rem; letter-spacing: 0.16em;
-      color: var(--accent); padding-top: 0.2rem;
-    }
-
-    .paper-meta {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 0.76rem; color: var(--muted);
-      margin-bottom: 0.35rem; letter-spacing: 0.06em;
-    }
-
-    .paper-title {
-      font-family: 'IM Fell English', serif;
-      font-size: 1.1rem; color: var(--text);
-      margin-bottom: 0.5rem; line-height: 1.35;
-    }
-
-    .paper-abstract {
-      font-size: 0.93rem; color: var(--muted);
-      margin-bottom: 0.85rem; line-height: 1.65;
-    }
-
-    .paper-link {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 0.74rem; letter-spacing: 0.16em;
-      text-transform: uppercase; color: var(--accent);
-      text-decoration: none; border-bottom: 1px solid var(--rule);
-      padding-bottom: 1px; transition: border-color 0.2s;
-    }
-
-    .paper-link:hover { border-color: var(--accent); }
-
-    /* ─── PODCAST ─── */
-    #podcast { background: var(--surface2); transition: background 0.4s; }
-
-    .podcast-grid {
-      display: grid; grid-template-columns: 1fr 1fr;
-      gap: 4rem; align-items: center;
-    }
-
-    /* Comet-print style: velvet black, radiant glow, rivet strip */
-    .podcast-cover {
-      aspect-ratio: 1;
-      border: 1px solid var(--border);
-      position: relative; overflow: hidden;
-      display: flex; align-items: center; justify-content: center;
-      flex-direction: column; padding: 3rem; text-align: center;
-    }
-
-    [data-theme="dark"]  .podcast-cover { background: #050403; }
-    [data-theme="light"] .podcast-cover { background: #d0dce3; }
-
-    /* Radiant comet-glow */
-    .podcast-cover::before {
-      content: ''; position: absolute; inset: 0;
-      background: radial-gradient(ellipse 55% 55% at 50% 48%,
-        rgba(196,154,74,0.13) 0%, transparent 70%);
-    }
-
-    /* Rivet strip — from Image 1 golden frame borders */
-    .podcast-cover::after {
-      content: ''; position: absolute;
-      top: 0; left: 0; right: 0; height: 5px;
-      background: repeating-linear-gradient(
-        90deg, var(--accent) 0, var(--accent) 2px,
-        transparent 2px, transparent 13px
-      );
-      opacity: 0.5;
-    }
-
-    .podcast-inner { position: relative; z-index: 1; }
-
-    .podcast-icon {
-      width: 52px; height: 52px;
-      border: 1px solid var(--accent); border-radius: 50%;
-      display: flex; align-items: center; justify-content: center;
-      margin: 0 auto 1rem;
-    }
-
-    .podcast-cover-title {
-      font-family: 'IM Fell English', serif;
-      font-size: 1.45rem; font-style: italic; color: var(--text);
-    }
-
-    .podcast-cover-sub {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 0.74rem; letter-spacing: 0.22em;
-      text-transform: uppercase; color: var(--accent);
-      margin-top: 0.5rem; display: block;
-    }
-
-    /* Moon-phase grid — from Image 1 top-right panel */
-    .moon-grid {
-      display: grid; grid-template-columns: repeat(3, 1fr);
-      gap: 5px; margin-top: 1.1rem; justify-items: center;
-    }
-
-    .moon-dot {
-      width: 7px; height: 7px; border-radius: 50%;
-      border: 1px solid var(--accent); opacity: 0.4;
-    }
-
-    .social-links { display: flex; flex-direction: column; gap: 0.85rem; margin-top: 2rem; }
-
-    .social-link {
-      display: flex; align-items: center; gap: 1rem;
-      padding: 0.85rem 1.2rem; border: 1px solid var(--rule);
-      text-decoration: none; color: var(--text);
-      font-family: 'Cormorant Garamond', serif; font-size: 1rem;
-      transition: border-color 0.3s, background 0.3s;
-    }
-
-    .social-link:hover { border-color: var(--accent); background: var(--glow); }
-
-    .social-link-label {
-      display: block; font-size: 0.7rem;
-      letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted);
+      font-family: 'Inter', sans-serif;
+      font-size: 1.05rem; font-style: italic;
+      font-weight: 300;
+      color: var(--text);
+      border-left: 3px solid var(--line-teal);
+      padding-left: 1.4rem; margin: 1.8rem 0;
+      line-height: 1.65;
     }
 
     /* ─── CV ─── */
     #cv { text-align: center; }
 
     .cv-ornament {
-      display: block; font-family: 'IM Fell English', serif;
-      font-size: 2rem; color: var(--accent-dim);
-      opacity: 0.55; letter-spacing: 0.3em; margin-bottom: 1rem;
+      display: block;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.5rem; font-weight: 300;
+      color: var(--dim);
+      letter-spacing: 0.5em; margin-bottom: 1rem;
     }
 
-    #cv p { color: var(--muted); font-style: italic; max-width: 48ch; margin: 0 auto 2.5rem; }
+    #cv p { color: var(--muted); max-width: 48ch; margin: 0 auto 2.5rem; }
+
+    /* ─── RESEARCH ─── */
+    .paper-item {
+      display: grid; grid-template-columns: 52px 1fr;
+      gap: 1.4rem; padding: 1.7rem 0;
+      border-bottom: 1px solid var(--rule2);
+    }
+
+    .paper-item:first-child { border-top: 1px solid var(--rule2); }
+
+    /* Station circle marker — from Image 2 Helvetica poster circles */
+    .paper-num {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.62rem; font-weight: 700;
+      letter-spacing: 0.08em;
+      width: 32px; height: 32px; border-radius: 50%;
+      background: var(--line-red);
+      color: #fff;
+      display: flex; align-items: center; justify-content: center;
+      margin-top: 0.2rem; flex-shrink: 0;
+    }
+
+    /* Override the ✦ 01 content in HTML — just show the number via background */
+    .paper-num { font-size: 0; }
+    .paper-num::after {
+      font-size: 0.6rem; font-weight: 700; letter-spacing: 0;
+      color: #fff;
+    }
+
+    /* Reset — keep HTML content, just style it */
+    .paper-num {
+      font-size: 0.58rem; font-weight: 700; letter-spacing: 0;
+      color: #fff;
+    }
+
+    .paper-meta {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.68rem; font-weight: 500;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 0.35rem;
+    }
+
+    .paper-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.05rem; font-weight: 600;
+      color: var(--text);
+      margin-bottom: 0.5rem; line-height: 1.3;
+    }
+
+    .paper-abstract {
+      font-size: 0.92rem; color: var(--muted);
+      margin-bottom: 0.85rem; line-height: 1.7;
+      font-family: 'Inter', sans-serif;
+    }
+
+    .paper-link {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.66rem; font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase; color: var(--accent2);
+      text-decoration: none;
+      border-bottom: 1px solid var(--line-teal);
+      padding-bottom: 1px; transition: color 0.2s, border-color 0.2s;
+    }
+
+    .paper-link:hover { color: var(--text); border-color: var(--text); }
+
+    /* ─── PROJECTS ─── */
+    #projects { background: var(--surface2); transition: background 0.4s; }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1.5rem;
+      margin-top: 0.5rem;
+    }
+
+    .project-card {
+      display: flex; flex-direction: column;
+      border: 1px solid var(--border);
+      background: var(--surface);
+      text-decoration: none;
+      transition: border-color 0.25s, background 0.25s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .project-card::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0; height: 3px;
+      background: linear-gradient(90deg, var(--line-gold), var(--line-teal));
+    }
+
+    .project-card:hover { border-color: var(--accent2); background: var(--glow); }
+
+    .project-card-body { padding: 1.6rem; flex: 1; }
+
+    .project-card-tag {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.62rem; font-weight: 600;
+      letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--accent); margin-bottom: 0.6rem; display: block;
+    }
+
+    .project-card-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1rem; font-weight: 600;
+      color: var(--text); line-height: 1.3;
+      margin-bottom: 0.6rem;
+    }
+
+    .project-card-desc {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.88rem; color: var(--muted);
+      line-height: 1.65; margin: 0;
+    }
+
+    .project-card-footer {
+      padding: 0.9rem 1.6rem;
+      border-top: 1px solid var(--rule2);
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.62rem; font-weight: 600;
+      letter-spacing: 0.16em; text-transform: uppercase;
+      color: var(--accent2);
+      display: flex; align-items: center; gap: 0.5rem;
+    }
+
+    /* ─── PODCAST ─── */
+    #podcast { transition: background 0.4s; }
+
+    .podcast-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 4rem; align-items: center;
+    }
+
+    .podcast-img-link {
+      display: block;
+      line-height: 0;
+    }
+
+    .podcast-img-link img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .social-links { display: flex; flex-direction: column; gap: 0.7rem; margin-top: 2rem; }
+
+    .social-link {
+      display: flex; align-items: center; gap: 1rem;
+      padding: 0.85rem 1.1rem; border: 1px solid var(--rule2);
+      text-decoration: none; color: var(--text);
+      font-family: 'Inter', sans-serif; font-size: 0.92rem;
+      transition: border-color 0.25s, background 0.25s;
+    }
+
+    .social-link:hover { border-color: var(--accent2); background: var(--glow); }
+
+    .social-link-label {
+      display: block; font-size: 0.62rem; font-weight: 600;
+      letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted);
+      font-family: 'Space Grotesk', sans-serif;
+    }
 
     /* ─── CONTACT ─── */
     #contact { background: var(--surface2); transition: background 0.4s; }
@@ -471,11 +507,17 @@
     .contact-detail { margin-top: 2rem; display: flex; flex-direction: column; gap: 1.1rem; }
 
     .cd-item {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 0.78rem; letter-spacing: 0.12em; text-transform: uppercase;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.88rem;
     }
 
-    .cd-item span { display: block; color: var(--accent); margin-bottom: 0.2rem; }
+    .cd-item span {
+      display: block;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.62rem; font-weight: 600;
+      letter-spacing: 0.16em; text-transform: uppercase;
+      color: var(--accent); margin-bottom: 0.25rem;
+    }
 
     .cd-item a {
       color: var(--muted); text-decoration: none;
@@ -484,25 +526,26 @@
 
     .cd-item a:hover { color: var(--text); }
 
-    .contact-form { display: flex; flex-direction: column; gap: 1.2rem; }
+    .contact-form { display: flex; flex-direction: column; gap: 1.1rem; }
 
-    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.1rem; }
 
     .form-group { display: flex; flex-direction: column; gap: 0.4rem; }
 
     .form-group label {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 0.72rem; letter-spacing: 0.22em;
-      text-transform: uppercase; color: var(--accent);
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.62rem; font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase; color: var(--muted);
     }
 
     .form-group input,
     .form-group textarea,
     .form-group select {
       background: var(--form-bg); border: 1px solid var(--border);
-      color: var(--text); font-family: 'Crimson Text', serif; font-size: 1rem;
+      color: var(--text); font-family: 'Inter', sans-serif; font-size: 0.95rem;
       padding: 0.72rem 0.9rem; outline: none; resize: vertical;
-      transition: border-color 0.3s, background 0.4s, color 0.4s;
+      transition: border-color 0.2s, background 0.4s, color 0.4s;
       -webkit-appearance: none; appearance: none;
     }
 
@@ -511,37 +554,46 @@
 
     .form-group input:focus,
     .form-group textarea:focus,
-    .form-group select:focus { border-color: var(--accent); }
+    .form-group select:focus { border-color: var(--line-teal); }
 
     .form-group textarea { min-height: 125px; }
 
     /* ─── FOOTER ─── */
     footer {
-      padding: 2.2rem 3rem;
-      border-top: 1px solid var(--rule2);
+      padding: 1.8rem 3rem;
+      border-top: 3px solid var(--line-teal);
       display: flex; justify-content: space-between; align-items: center;
       transition: border-color 0.4s;
     }
 
-    .footer-name { font-family: 'IM Fell English', serif; font-size: 0.88rem; color: var(--dim); }
-    .footer-note { font-family: 'Cormorant Garamond', serif; font-size: 0.73rem; letter-spacing: 0.1em; color: var(--dim); }
+    .footer-name {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.78rem; font-weight: 600;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--dim);
+    }
+
+    .footer-note {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.72rem; color: var(--dim);
+    }
 
     /* ─── ANIMATIONS ─── */
     @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(16px); }
+      from { opacity: 0; transform: translateY(14px); }
       to   { opacity: 1; transform: translateY(0); }
     }
 
     .reveal {
-      opacity: 0; transform: translateY(20px);
-      transition: opacity 0.7s ease, transform 0.7s ease;
+      opacity: 0; transform: translateY(18px);
+      transition: opacity 0.65s ease, transform 0.65s ease;
     }
 
     .reveal.visible { opacity: 1; transform: translateY(0); }
 
     /* ─── RESPONSIVE ─── */
     @media (max-width: 800px) {
-      nav { padding: 0.9rem 1.5rem; }
+      nav { padding: 0 1.5rem; }
       .nav-links { display: none; }
       .nav-links.open {
         display: flex; flex-direction: column;
@@ -558,6 +610,8 @@
       .contact-grid { grid-template-columns: 1fr; gap: 3rem; }
       .form-row { grid-template-columns: 1fr; }
       footer { flex-direction: column; gap: 0.7rem; text-align: center; }
+      .hero-lines { opacity: 0.1; }
+      .projects-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -570,9 +624,11 @@
       <button class="nav-toggle" onclick="document.getElementById('nl').classList.toggle('open')">☰</button>
       <ul class="nav-links" id="nl">
         <li><a href="#about">About</a></li>
-        <li><a href="#research">Research</a></li>
-        <li><a href="#podcast">Podcast</a></li>
         <li><a href="cv-page.html">CV</a></li>
+        <li><a href="#research">Research</a></li>
+        <li><a href="papers-page.html">Papers</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#podcast">Podcast</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
       <button class="theme-toggle" id="tt" aria-label="Toggle theme">
@@ -594,7 +650,45 @@
 
   <!-- HERO -->
   <section id="home">
-    <div class="hero-bg"></div>
+    <div class="hero-bg">
+      <svg class="hero-lines" viewBox="0 0 1000 600" preserveAspectRatio="none"
+           xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+
+        <!-- RED LINE: enters right at y=110, runs left to x=720, turns down, exits bottom -->
+        <polyline points="1000,110 720,110 720,600"
+          fill="none" stroke="#c0392b" stroke-width="5"/>
+
+        <!-- TEAL LINE: enters right at y=190, runs left to x=560, turns down to y=330,
+             turns left, exits left edge -->
+        <polyline points="1000,190 560,190 560,330 0,330"
+          fill="none" stroke="#4fa8c4" stroke-width="5"/>
+
+        <!-- GOLD LINE: enters right at y=280, runs left to x=820, turns down to y=420,
+             turns left to x=640, turns down, exits bottom -->
+        <polyline points="1000,280 820,280 820,420 640,420 640,600"
+          fill="none" stroke="#e8b84b" stroke-width="5"/>
+
+        <!-- OLIVE LINE: enters right at y=380, runs left to x=880, turns down, exits bottom -->
+        <polyline points="1000,380 880,380 880,600"
+          fill="none" stroke="#7a8a4a" stroke-width="5"/>
+
+        <!-- TEAL LINE 2 (thinner): enters right at y=460, runs left to x=760, turns down
+             to y=520, turns left, exits left -->
+        <polyline points="1000,460 760,460 760,520 0,520"
+          fill="none" stroke="#4fa8c4" stroke-width="3"/>
+
+        <!-- Station dots at corners — small filled circles -->
+        <circle cx="720" cy="110" r="7" fill="#c0392b"/>
+        <circle cx="560" cy="190" r="7" fill="#4fa8c4"/>
+        <circle cx="560" cy="330" r="7" fill="#4fa8c4"/>
+        <circle cx="820" cy="280" r="7" fill="#e8b84b"/>
+        <circle cx="820" cy="420" r="7" fill="#e8b84b"/>
+        <circle cx="640" cy="420" r="7" fill="#e8b84b"/>
+        <circle cx="880" cy="380" r="7" fill="#7a8a4a"/>
+        <circle cx="760" cy="460" r="7" fill="#4fa8c4"/>
+        <circle cx="760" cy="520" r="7" fill="#4fa8c4"/>
+      </svg>
+    </div>
 
     <div class="rivet-bar" style="position:relative;z-index:1;">
       <div class="rivet"></div>
@@ -618,21 +712,7 @@
   </section>
 
   <!-- Branch divider -->
-  <div class="branch-rule">
-    <svg viewBox="0 0 1200 26" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" height="26" width="100%">
-      <path d="M0,13 Q150,5 300,13 T600,13 T900,13 T1200,13" stroke="currentColor" stroke-width="0.8" fill="none"/>
-      <path d="M220,13 Q240,6 258,13" stroke="currentColor" stroke-width="0.6" fill="none"/>
-      <path d="M258,13 Q276,20 294,13" stroke="currentColor" stroke-width="0.6" fill="none"/>
-      <path d="M510,13 Q530,5 552,13" stroke="currentColor" stroke-width="0.6" fill="none"/>
-      <path d="M552,13 Q572,21 590,13" stroke="currentColor" stroke-width="0.6" fill="none"/>
-      <path d="M810,13 Q832,5 852,13" stroke="currentColor" stroke-width="0.6" fill="none"/>
-      <circle cx="237" cy="9" r="1.1" fill="currentColor" opacity="0.5"/>
-      <circle cx="275" cy="19" r="0.9" fill="currentColor" opacity="0.4"/>
-      <circle cx="530" cy="7" r="1.1" fill="currentColor" opacity="0.5"/>
-      <circle cx="568" cy="19" r="0.9" fill="currentColor" opacity="0.4"/>
-      <circle cx="830" cy="7" r="1" fill="currentColor" opacity="0.5"/>
-    </svg>
-  </div>
+  <div class="branch-rule"></div>
 
   <!-- ABOUT -->
   <div id="about">
@@ -646,18 +726,9 @@
             <span class="tl"></span><span class="tr"></span>
             <span class="bl"></span><span class="br"></span>
           </div>
-          <div class="photo-wrap" onclick="document.getElementById('pu').click()" title="Click to upload photo">
-            <div class="photo-placeholder" id="ph">
-              <svg width="38" height="38" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1">
-                <rect x="3" y="3" width="18" height="18" rx="1"/>
-                <circle cx="8.5" cy="8.5" r="1.5"/>
-                <polyline points="21 15 16 10 5 21"/>
-              </svg>
-              <p style="margin-top:0.6rem;">Click to upload<br/>your photograph</p>
-            </div>
-            <img id="pi" src="" alt="Emma Nelson" />
+          <div class="photo-wrap">
+            <img src="signal-2026-06-08-201254_002.jpeg" alt="Emma Nelson" />
           </div>
-          <input type="file" id="pu" accept="image/*" onchange="loadPhoto(event)" />
         </div>
 
         <div>
@@ -696,13 +767,25 @@
   </div>
 
   <!-- Branch divider -->
-  <div class="branch-rule">
-    <svg viewBox="0 0 1200 26" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" height="26" width="100%">
-      <path d="M0,13 Q300,20 600,13 T1200,13" stroke="currentColor" stroke-width="0.8" fill="none"/>
-      <circle cx="400" cy="13" r="1.5" fill="currentColor" opacity="0.4"/>
-      <circle cx="800" cy="13" r="1.5" fill="currentColor" opacity="0.4"/>
-    </svg>
+  <div class="branch-rule"></div>
+
+  <!-- CV -->
+  <div id="cv">
+    <div class="wrap" style="text-align:center;">
+      <p class="section-label reveal" style="justify-content:center;">Curriculum Vitae</p>
+      <span class="cv-ornament reveal">✦ ✦ ✦</span>
+      <h2 style="font-size:1.9rem;" class="reveal">Emma Nelson</h2>
+      <p class="reveal">
+        My full curriculum vitae includes my educational history, publications,
+        conference presentations, teaching experience, and service.
+        Updated June, 2026.
+      </p>
+      <a href="cv-page.html" class="btn reveal">View Full CV →</a>
+    </div>
   </div>
+
+  <!-- Branch divider -->
+  <div class="branch-rule"></div>
 
   <!-- RESEARCH -->
   <div id="research">
@@ -721,7 +804,7 @@
             This paper argues that socioeconomic status determines the treatment of human remains and possibilities
             for posthumous dignity. As a province with a well-documented history of funerary practices and modern-day policies to
             subsidize funerals for unclaimed remains, Nova Scotia is a nuanced setting in which to explore socioeconomic
-            inequality in death. Compared with wealthier classes, low income earners may not have the same resources with which to access “a good death” and determine how they are treated posthumously.
+            inequality in death. Compared with wealthier classes, low income earners may not have the same resources with which to access "a good death" and determine how they are treated posthumously.
             Despite being conceptualized as a great equalizer, death is deeply affected by class. <i>How do socioeconomic inequalities shape possibilities for posthumous dignity? </i>
           </p>
 
@@ -746,42 +829,59 @@
       <!-- ✦ End paper block -->
 
       <p style="font-style:italic; color:var(--muted); margin-top:2.5rem;" class="reveal">
-        Additional papers and working documents forthcoming. 
+        Additional papers and working documents forthcoming.
         Contact me for pre-publication drafts.
       </p>
+
+      <div style="margin-top:2rem;" class="reveal">
+        <a href="papers-page.html" class="btn btn-ghost">View All Papers →</a>
+      </div>
     </div>
   </div>
 
   <!-- Branch divider -->
-  <div class="branch-rule" style="opacity:0.1;">
-    <svg viewBox="0 0 1200 26" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" height="26" width="100%">
-      <path d="M0,13 Q400,6 600,13 T1200,13" stroke="currentColor" stroke-width="0.8" fill="none"/>
-    </svg>
+  <div class="branch-rule"></div>
+
+  <!-- PROJECTS -->
+  <div id="projects">
+    <div class="wrap">
+      <p class="section-label reveal">Projects</p>
+      <h2 class="reveal">Other Work &amp; Writing</h2>
+
+      <div class="projects-grid">
+
+        <a href="https://substack.com/home/post/p-194653776" class="project-card reveal" target="_blank" rel="noopener">
+          <div class="project-card-body">
+            <span class="project-card-tag">Substack · Essay</span>
+            <p class="project-card-title">Substack Essay</p>
+            <p class="project-card-desc">
+              Writing on Substack exploring ideas beyond the academy.
+            </p>
+          </div>
+          <div class="project-card-footer">
+            Read on Substack ↗
+          </div>
+        </a>
+
+        <!-- ✦ Add more project cards below — copy the <a> block above -->
+
+      </div>
+    </div>
   </div>
+
+  <!-- Branch divider -->
+  <div class="branch-rule"></div>
 
   <!-- PODCAST -->
   <div id="podcast">
     <div class="wrap">
       <p class="section-label reveal">Podcast</p>
-      <h2 class="reveal">Planning through land acknowledgments</h2><!-- ← replace with your podcast name -->
+      <h2 class="reveal">Planning through land acknowledgments</h2>
 
       <div class="podcast-grid">
-        <div class="podcast-cover reveal">
-          <div class="podcast-inner">
-            <div class="podcast-icon">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.5">
-                <circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="3"/>
-              </svg>
-            </div>
-            <p class="podcast-cover-title">Planning through land acknowledgments</p><!-- ← replace -->
-            <span class="podcast-cover-sub">Exploring future urban planners' perspectives on colonial responsibility</span>
-            <div class="moon-grid">
-              <div class="moon-dot"></div><div class="moon-dot"></div><div class="moon-dot"></div>
-              <div class="moon-dot"></div><div class="moon-dot"></div><div class="moon-dot"></div>
-              <div class="moon-dot"></div><div class="moon-dot"></div><div class="moon-dot"></div>
-            </div>
-          </div>
-        </div>
+        <a href="https://anchor.fm/emnelson" class="podcast-img-link reveal" target="_blank" rel="noopener" aria-label="Listen on Anchor.fm">
+          <img src="podcast.jpg" alt="Planning through land acknowledgments podcast" />
+        </a>
 
         <div class="reveal">
           <p>
@@ -794,18 +894,7 @@
           </p>
 
           <div class="social-links">
-            <a href="#" class="social-link" target="_blank" rel="noopener">
-              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.5">
-                <rect x="2" y="2" width="20" height="20" rx="5"/>
-                <circle cx="12" cy="12" r="5"/>
-                <circle cx="17.5" cy="6.5" r="0.5" fill="var(--accent)"/>
-              </svg>
-              <div>
-                <span class="social-link-label">Instagram</span>
-                @[whilewaitingproject]<!-- ← replace -->
-              </div>
-            </a>
-            <a href="#" class="social-link" target="_blank" rel="noopener">
+            <a href="https://anchor.fm/emnelson" class="social-link" target="_blank" rel="noopener">
               <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.5">
                 <circle cx="12" cy="12" r="10"/>
                 <path d="M8.56 2.75c4.37 6.03 6.02 9.42 8.03 17.72"/>
@@ -813,7 +902,7 @@
               </svg>
               <div>
                 <span class="social-link-label">Listen Online</span>
-                Available on anchor.fm/emnelson<!-- ← replace -->
+                anchor.fm/emnelson
               </div>
             </a>
           </div>
@@ -823,34 +912,7 @@
   </div>
 
   <!-- Branch divider -->
-  <div class="branch-rule">
-    <svg viewBox="0 0 1200 26" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" height="26" width="100%">
-      <path d="M0,13 Q600,20 1200,13" stroke="currentColor" stroke-width="0.8" fill="none"/>
-      <circle cx="600" cy="16" r="1.5" fill="currentColor" opacity="0.4"/>
-    </svg>
-  </div>
-
-  <!-- CV -->
-  <div id="cv">
-    <div class="wrap" style="text-align:center;">
-      <p class="section-label reveal" style="justify-content:center;">Curriculum Vitae</p>
-      <span class="cv-ornament reveal">✦ ✦ ✦</span>
-      <h2 style="font-size:1.9rem;" class="reveal">Emma Nelson</h2>
-      <p class="reveal">
-        My full curriculum vitae includes my educational history, publications, 
-        conference presentations, teaching experience, and service. 
-        Updated June, 2026.
-      </p>
-      <a href="cv-page.html" class="btn reveal">View Full CV →</a>
-    </div>
-  </div>
-
-  <!-- Branch divider -->
-  <div class="branch-rule" style="opacity:0.1;">
-    <svg viewBox="0 0 1200 26" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" height="26" width="100%">
-      <path d="M0,13 Q300,7 600,13 T1200,13" stroke="currentColor" stroke-width="0.8" fill="none"/>
-    </svg>
-  </div>
+  <div class="branch-rule"></div>
 
   <!-- CONTACT -->
   <div id="contact">
@@ -861,7 +923,7 @@
       <div class="contact-grid">
         <div class="reveal">
           <p style="color:var(--muted); font-style:italic;">
-            I welcome messages from fellow researchers, potential collaborators, 
+            I welcome messages from fellow researchers, potential collaborators,
             journalists, and those interested in participating in my research.
           </p>
           <div class="contact-detail">
@@ -942,20 +1004,6 @@
     PREF.addEventListener('change', e => {
       if (!localStorage.getItem('theme')) setTheme(e.matches);
     });
-
-    /* PHOTO UPLOAD */
-    function loadPhoto(e) {
-      const file = e.target.files[0];
-      if (!file) return;
-      const r = new FileReader();
-      r.onload = ev => {
-        const img = document.getElementById('pi');
-        img.src = ev.target.result;
-        img.style.display = 'block';
-        document.getElementById('ph').style.display = 'none';
-      };
-      r.readAsDataURL(file);
-    }
 
     /* SCROLL REVEAL */
     const obs = new IntersectionObserver(entries => {
