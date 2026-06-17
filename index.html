@@ -4,6 +4,15 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Emma Nelson — Sociologist</title>
+  <meta name="description" content="Emma Nelson is a PhD student in Sociology at Dalhousie University studying the (de)medicalization of birth and death, comparing midwifery and palliative care as modern rites of passage." />
+  <meta property="og:title" content="Emma Nelson — Sociologist" />
+  <meta property="og:description" content="PhD student in Sociology at Dalhousie University studying birth, death, and the sociology of thresholds." />
+  <meta property="og:image" content="signal-2026-06-08-201254_002.jpeg" />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Emma Nelson — Sociologist" />
+  <meta name="twitter:description" content="PhD student in Sociology at Dalhousie University studying birth, death, and the sociology of thresholds." />
+  <link rel="icon" href="dragon.jpg" type="image/jpeg" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
@@ -85,6 +94,8 @@
       padding: 0 3rem;
       height: 54px;
       background: var(--nav-bg);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
       border-bottom: 3px solid var(--line-red);
       transition: background 0.4s, border-color 0.4s;
     }
@@ -96,6 +107,8 @@
       color: var(--text);
       text-decoration: none;
     }
+
+    .nav-name-initials { display: none; }
 
     .nav-right { display: flex; align-items: center; gap: 1.8rem; }
 
@@ -110,11 +123,34 @@
       padding: 0 1.2rem;
       height: 54px; display: flex; align-items: center;
       border-left: 1px solid var(--rule2);
-      transition: color 0.2s, background 0.2s;
+      transition: color 0.2s, background 0.2s, box-shadow 0.2s;
     }
 
     .nav-links a:hover { color: var(--text); background: var(--glow); }
+    .nav-links a.active { color: var(--text); box-shadow: inset 0 -3px 0 var(--accent); }
     .nav-links li:last-child a { border-right: 1px solid var(--rule2); }
+
+    /* ─── PROGRESS BAR ─── */
+    #progress-track {
+      position: fixed; top: 54px; left: 0; right: 0;
+      height: 2px; z-index: 999; pointer-events: none;
+      background: var(--rule2);
+    }
+    #progress-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--line-red), var(--line-teal), var(--line-gold));
+      width: 0%; will-change: width;
+    }
+    #progress-dot {
+      position: absolute; top: 50%;
+      transform: translate(-50%, -50%);
+      width: 11px; height: 11px; border-radius: 50%;
+      background: var(--line-gold);
+      border: 2px solid var(--bg);
+      left: 0%; will-change: left;
+      transition: background 0.4s, border-color 0.4s;
+      box-shadow: 0 0 0 1px var(--line-gold);
+    }
 
     .theme-toggle {
       background: none; border: 1px solid var(--dim);
@@ -131,7 +167,21 @@
     [data-theme="light"] .icon-moon { display: none; }
     [data-theme="light"] .icon-sun  { display: block; }
 
-    .nav-toggle { display: none; background: none; border: none; cursor: pointer; color: var(--text); font-size: 1.2rem; }
+    .nav-toggle {
+      display: none;
+      flex-direction: column; justify-content: center; align-items: center; gap: 5px;
+      background: none; border: none; cursor: pointer;
+      width: 32px; height: 32px; padding: 4px; flex-shrink: 0;
+    }
+    .nav-toggle span {
+      display: block; width: 20px; height: 2px;
+      background: var(--text); border-radius: 1px;
+      transform-origin: center;
+      transition: transform 0.25s ease, opacity 0.25s ease, width 0.25s ease;
+    }
+    .nav-toggle.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .nav-toggle.open span:nth-child(2) { opacity: 0; width: 0; }
+    .nav-toggle.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
     /* ─── HERO ─── */
     #home {
@@ -153,7 +203,7 @@
     /* Subway-line SVG lives inside .hero-bg */
     .hero-lines {
       position: absolute; inset: 0; width: 100%; height: 100%;
-      pointer-events: none; z-index: 0; opacity: 0.22;
+      pointer-events: none; z-index: 0; opacity: 0.35;
     }
 
     /* Station-stop dot — top-left corner marker */
@@ -246,6 +296,9 @@
       margin-bottom: 1.2rem;
     }
 
+    #cv .section-label, #podcast .section-label { background: var(--line-teal); color: #fff; }
+    #research .section-label, #contact .section-label { background: var(--line-red); color: #fff; }
+
     h2 {
       font-family: 'Space Grotesk', 'Helvetica Neue', Helvetica, sans-serif;
       font-size: clamp(1.7rem, 3.2vw, 2.6rem);
@@ -278,11 +331,10 @@
     #about { background: var(--surface2); transition: background 0.4s; }
 
     .about-grid {
-      display: grid; grid-template-columns: 240px 1fr;
-      gap: 4.5rem; align-items: start;
+      overflow: hidden; /* clearfix for float */
     }
 
-    .photo-frame { position: relative; }
+    .photo-frame { position: relative; float: left; width: 480px; margin-right: 3.5rem; margin-bottom: 1.5rem; }
 
     /* Simple offset border — echoing transit map diagram boxes */
     .photo-frame::before {
@@ -385,6 +437,8 @@
       font-size: 0.92rem; color: var(--muted);
       margin-bottom: 0.85rem; line-height: 1.7;
       font-family: 'Inter', sans-serif;
+      border-left: 2px solid var(--line-gold);
+      padding-left: 1.1rem;
     }
 
     .paper-link {
@@ -458,6 +512,14 @@
       color: var(--accent2);
       display: flex; align-items: center; gap: 0.5rem;
     }
+
+    .project-card-footer a {
+      color: var(--accent2);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .project-card-footer a:hover { color: var(--text); }
 
     /* ─── PODCAST ─── */
     #podcast { transition: background 0.4s; }
@@ -578,6 +640,19 @@
       font-size: 0.72rem; color: var(--dim);
     }
 
+    /* ─── LIGHT THEME NOISE ─── */
+    html::after {
+      content: '';
+      position: fixed; inset: 0;
+      pointer-events: none; z-index: 9998;
+      opacity: 0;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n' x='0' y='0'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+      background-size: 200px 200px;
+      background-repeat: repeat;
+      transition: opacity 0.4s;
+    }
+    [data-theme="light"] html::after { opacity: 0.18; }
+
     /* ─── ANIMATIONS ─── */
     @keyframes fadeUp {
       from { opacity: 0; transform: translateY(14px); }
@@ -601,16 +676,17 @@
         background: var(--nav-bg); padding: 1.5rem; gap: 1.2rem;
         border-bottom: 1px solid var(--rule2);
       }
-      .nav-toggle { display: block; }
+      .nav-toggle { display: flex; }
+      .nav-name-full { display: none; }
+      .nav-name-initials { display: inline; }
       .wrap { padding: 4rem 1.5rem; }
       #home { padding: 5rem 1.5rem 3.5rem; }
-      .about-grid { grid-template-columns: 1fr; gap: 3rem; }
-      .photo-frame { max-width: 230px; }
+      .photo-frame { float: none; width: 100%; max-width: 280px; margin-right: 0; }
       .podcast-grid { grid-template-columns: 1fr; }
       .contact-grid { grid-template-columns: 1fr; gap: 3rem; }
       .form-row { grid-template-columns: 1fr; }
       footer { flex-direction: column; gap: 0.7rem; text-align: center; }
-      .hero-lines { opacity: 0.1; }
+      .hero-lines { opacity: 0.2; }
       .projects-grid { grid-template-columns: 1fr; }
     }
   </style>
@@ -619,13 +695,17 @@
 
   <!-- NAV -->
   <nav>
-    <a href="#home" class="nav-name">Emma Nelson</a>
+    <a href="#home" class="nav-name">
+      <span class="nav-name-full">Emma Nelson</span>
+      <span class="nav-name-initials">EN</span>
+    </a>
     <div class="nav-right">
-      <button class="nav-toggle" onclick="document.getElementById('nl').classList.toggle('open')">☰</button>
+      <button class="nav-toggle" id="nav-toggle-btn" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
       <ul class="nav-links" id="nl">
         <li><a href="#about">About</a></li>
         <li><a href="cv-page.html">CV</a></li>
-        <li><a href="#research">Research</a></li>
         <li><a href="papers-page.html">Papers</a></li>
         <li><a href="#projects">Projects</a></li>
         <li><a href="#podcast">Podcast</a></li>
@@ -647,6 +727,12 @@
       </button>
     </div>
   </nav>
+
+  <!-- PROGRESS BAR -->
+  <div id="progress-track" aria-hidden="true">
+    <div id="progress-fill"></div>
+    <div id="progress-dot"></div>
+  </div>
 
   <!-- HERO -->
   <section id="home">
@@ -734,7 +820,7 @@
         <div>
           <p>
             I am a PhD student in Sociology at Dalhousie University, where I study two particular
-            transitional moments that have become medicalized: birth and death. I am currently developing
+            transitional moments that have become medicalized: <i>giving birth</i> and <i>dying</i>. I am currently developing
             a comparative study of how midwives and palliative care nurses understand their work and
             shape modern day <i>rites of passage.</i>
           </p>
@@ -799,7 +885,7 @@
       <div class="paper-item reveal">
         <div class="paper-num">✦ 01</div>
         <div>
-          <p class="paper-meta">2026 </p>
+          <p class="paper-meta">2026 · Essay</p>
           <p class="paper-title">Known only in death
 </p>
           <p class="paper-abstract">
@@ -810,7 +896,7 @@
             Despite being conceptualized as a great equalizer, death is deeply affected by class. <i>How do socioeconomic inequalities shape possibilities for posthumous dignity? </i>
           </p>
 
-<a href="/Papers/ENelson_Knownonlyindeath" download="ENelson_Knownonlyindeath">Download the pdf ↓</a>
+<a href="/Papers/ENelson_Knownonlyindeath.pdf" download="ENelson_Knownonlyindeath" class="paper-link">Download the pdf ↓</a>
 
 
         </div>
@@ -825,10 +911,12 @@
             Co-authored with my MES supervisor, Dr Deborah McGregor, this book chapter explores how our positionality shapes our interactions with land acknowledgments (Dr McGregor being
             Anishinaabe from Whitefish River First Nation, and Emma being a descendant of Scottish-Norwegian settlers). We reflect on some tools that we have used to engage others with the deeply
             radical roots of land acknowledgments, beyond simple recognition and moving into relationality.
-          </p>
-          <p>Published in <i>Sacred Civics: Building Seven Generation Cities</i>, Routledge.</p>
 
-          <a href="/Papers/sacred civics_DMcGregor_ENelson.pdf" download="sacred civics_DMcGregor_ENelson">Download the pdf ↓</a>
+            <p>Published in <i>Sacred Civics: Building Seven Generation Cities</i>, Routledge.</p>
+          </p>
+
+
+          <a href="/Papers/sacred civics_DMcGregor_ENelson.pdf" download="sacred civics_DMcGregor_ENelson" class="paper-link">Download the pdf ↓</a>
 
 
         </div>
@@ -857,7 +945,7 @@
 
       <div class="projects-grid">
 
-        <a href="https://substack.com/home/post/p-194653776" class="project-card reveal" target="_blank" rel="noopener">
+        <div class="project-card reveal">
           <div class="project-card-body">
             <span class="project-card-tag">Essay · Substack</span>
             <p class="project-card-title">Blog</p>
@@ -866,13 +954,13 @@
             </p>
           </div>
           <div class="project-card-footer">
-            <a href="https://estfrancis.substack.com/">Read on Substack ↗</a>
+            <a href="https://estfrancis.substack.com/" target="_blank" rel="noopener">Read on Substack ↗</a>
           </div>
-        </a>
+        </div>
 
-         <a href="https://mappinglandtheft.ca/index.php?title=Main_Page" class="project-card reveal" target="_blank" rel="noopener">
+        <div class="project-card reveal">
           <div class="project-card-body">
-            <span class="project-card-tag">GIS Mapmaking · open source · decolonial history</span>
+            <span class="project-card-tag">GIS Mapmaking · open source · decolonializing history</span>
             <p class="project-card-title">Mapping land theft</p>
             <p class="project-card-desc">
               A digital archive and interactive map showing land "transfers" to the Crown. Intended to spark conversations about the land theft that created Canada. As an RA, I was the database
@@ -880,11 +968,11 @@
             </p>
           </div>
           <div class="project-card-footer">
-            <a href="mappinglandtheft.ca">View on wikicommons ↗</a>
+            <a href="https://mappinglandtheft.ca/index.php?title=Main_Page" target="_blank" rel="noopener">View on wikicommons ↗</a>
           </div>
-        </a>
+        </div>
 
-        <a href="https://mappinglandtheft.ca/index.php?title=Main_Page" class="project-card reveal" target="_blank" rel="noopener">
+        <div class="project-card reveal">
           <div class="project-card-body">
             <span class="project-card-tag">Book · Self-published</span>
             <p class="project-card-title">I've Bin Gardening: How to grow a container garden</p>
@@ -893,9 +981,9 @@
             </p>
           </div>
           <div class="project-card-footer">
-            <a href="bingardening.square.site">Visit website ↗</a>
+            <a href="https://bingardening.square.site" target="_blank" rel="noopener">Visit website ↗</a>
           </div>
-        </a>
+        </div>
         <!-- ✦ Add more project cards below — copy the <a> block above -->
 
       </div>
@@ -975,8 +1063,7 @@
           </div>
         </div>
 
-        <!-- Formspree: sign up at formspree.io, replace YOUR_FORM_ID -->
-        <form class="contact-form reveal" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+        <form class="contact-form reveal" action="mailto:emma.nelson@dal.ca" method="POST" enctype="text/plain">
           <div class="form-row">
             <div class="form-group">
               <label for="n">Name</label>
@@ -1044,9 +1131,79 @@
     }, { threshold: 0.08 });
     document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
 
-    /* NAV CLOSE */
+    /* NAV HAMBURGER */
+    const toggleBtn = document.getElementById('nav-toggle-btn');
+    const navList   = document.getElementById('nl');
+    toggleBtn.addEventListener('click', e => {
+      e.stopPropagation();
+      const open = navList.classList.toggle('open');
+      toggleBtn.classList.toggle('open', open);
+    });
     document.querySelectorAll('#nl a').forEach(a =>
-      a.addEventListener('click', () => document.getElementById('nl').classList.remove('open')));
+      a.addEventListener('click', () => {
+        navList.classList.remove('open');
+        toggleBtn.classList.remove('open');
+      }));
+    document.addEventListener('click', e => {
+      if (!navList.contains(e.target) && !toggleBtn.contains(e.target)) {
+        navList.classList.remove('open');
+        toggleBtn.classList.remove('open');
+      }
+    });
+
+    /* SCROLL SPY */
+    const spySections = Array.from(document.querySelectorAll('[id]')).filter(el =>
+      ['about','cv','research','projects','podcast','contact'].includes(el.id));
+    const navLinks = document.querySelectorAll('.nav-links a');
+    function updateSpy() {
+      let current = '';
+      spySections.forEach(s => {
+        if (window.scrollY >= s.offsetTop - 80) current = s.id;
+      });
+      navLinks.forEach(a => {
+        const href = a.getAttribute('href');
+        a.classList.toggle('active', href === '#' + current);
+      });
+    }
+    window.addEventListener('scroll', updateSpy, { passive: true });
+    updateSpy();
+
+    /* PROGRESS BAR */
+    const fill = document.getElementById('progress-fill');
+    const dot  = document.getElementById('progress-dot');
+    const dotColors = ['var(--line-red)', 'var(--line-teal)', 'var(--line-gold)'];
+    function updateProgress() {
+      const max = document.body.scrollHeight - window.innerHeight;
+      const pct = max > 0 ? Math.min(window.scrollY / max, 1) : 0;
+      const pctStr = (pct * 100).toFixed(2) + '%';
+      fill.style.width = pctStr;
+      dot.style.left   = pctStr;
+      const idx = pct < 0.33 ? 0 : pct < 0.66 ? 1 : 2;
+      dot.style.background  = dotColors[idx];
+      dot.style.boxShadow   = '0 0 0 1px ' + dotColors[idx];
+    }
+    window.addEventListener('scroll', updateProgress, { passive: true });
+    updateProgress();
+
+    /* HERO LINE ANIMATION (JS for reliability) */
+    window.addEventListener('load', () => {
+      document.querySelectorAll('.hero-lines polyline').forEach((line, i) => {
+        const len = line.getTotalLength();
+        line.style.strokeDasharray  = len;
+        line.style.strokeDashoffset = len;
+        line.style.transition = 'stroke-dashoffset 1.0s ease ' + (i * 0.17) + 's';
+        requestAnimationFrame(() => requestAnimationFrame(() => {
+          line.style.strokeDashoffset = '0';
+        }));
+      });
+      document.querySelectorAll('.hero-lines circle').forEach((c, i) => {
+        c.style.opacity = '0';
+        c.style.transition = 'opacity 0.3s ease ' + (0.22 + i * 0.09) + 's';
+        requestAnimationFrame(() => requestAnimationFrame(() => {
+          c.style.opacity = '1';
+        }));
+      });
+    });
   </script>
 </body>
 </html>
