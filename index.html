@@ -106,9 +106,16 @@
       letter-spacing: 0.12em; text-transform: uppercase;
       color: var(--text);
       text-decoration: none;
+      display: flex; align-items: center; gap: 0.65rem;
     }
 
     .nav-name-initials { display: none; }
+
+    .nav-dragon {
+      width: 30px; height: 30px;
+      object-fit: cover; border-radius: 2px;
+      flex-shrink: 0;
+    }
 
     .nav-right { display: flex; align-items: center; gap: 1.8rem; }
 
@@ -204,6 +211,12 @@
     .hero-lines {
       position: absolute; inset: 0; width: 100%; height: 100%;
       pointer-events: none; z-index: 0; opacity: 0.35;
+    }
+
+    /* Train dot overlay — separate SVG at full opacity */
+    .hero-trains {
+      position: absolute; inset: 0; width: 100%; height: 100%;
+      pointer-events: none; z-index: 1;
     }
 
     /* Station-stop dot — top-left corner marker */
@@ -453,6 +466,34 @@
 
     .paper-link:hover { color: var(--text); border-color: var(--text); }
 
+    button.paper-link { background: none; padding: 0 0 1px 0; cursor: pointer; }
+
+    /* ─── EXCERPT TOGGLE ─── */
+    .excerpt-panel {
+      display: grid; grid-template-rows: 0fr; overflow: hidden;
+      transition: grid-template-rows 0.38s ease;
+    }
+    .excerpt-panel.open { grid-template-rows: 1fr; }
+    .excerpt-inner { min-height: 0; padding-top: 1.2rem; }
+    .excerpt-img {
+      max-width: 100%; height: auto;
+      display: block; margin-bottom: 1rem;
+      border: 1px solid var(--border);
+    }
+    /* Book cover: image left, text right */
+    .excerpt-inner--side {
+      display: flex; gap: 1.5rem; align-items: flex-start;
+    }
+    .excerpt-inner--side .excerpt-img {
+      width: 200px; flex-shrink: 0; margin-bottom: 0;
+    }
+    .excerpt-text-wrap { flex: 1; min-width: 0; }
+    .excerpt-text {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.9rem; line-height: 1.78; color: var(--muted);
+      margin-bottom: 0.8rem;
+    }
+
     /* ─── PROJECTS ─── */
     #projects { background: var(--surface2); transition: background 0.4s; }
 
@@ -696,6 +737,7 @@
   <!-- NAV -->
   <nav>
     <a href="#home" class="nav-name">
+      <img src="dragon.jpg" alt="" class="nav-dragon" />
       <span class="nav-name-full">Emma Nelson</span>
       <span class="nav-name-initials">EN</span>
     </a>
@@ -737,7 +779,7 @@
   <!-- HERO -->
   <section id="home">
     <div class="hero-bg">
-      <svg class="hero-lines" viewBox="0 0 1000 600" preserveAspectRatio="none"
+      <svg class="hero-lines" viewBox="0 0 1000 600" preserveAspectRatio="xMaxYMid meet"
            xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
 
         <!-- RED LINE: enters right at y=110, runs left to x=720, turns down, exits bottom -->
@@ -896,7 +938,21 @@
             Despite being conceptualized as a great equalizer, death is deeply affected by class. <i>How do socioeconomic inequalities shape possibilities for posthumous dignity? </i>
           </p>
 
+<a href="https://estfrancis.substack.com/p/known-only-in-death" class="paper-link" target="_blank" rel="noopener">Read on Substack ↗</a>
+&ensp;
 <a href="/Papers/ENelson_Knownonlyindeath.pdf" download="ENelson_Knownonlyindeath" class="paper-link">Download the pdf ↓</a>
+&ensp;
+<button class="paper-link excerpt-btn" data-target="excerpt-01">Read an excerpt ↓</button>
+<div class="excerpt-panel" id="excerpt-01">
+  <div class="excerpt-inner">
+    <img src="https://substack-post-media.s3.amazonaws.com/public/images/3003f975-14fb-4f78-b45a-7fe2f91038d2_948x778.jpeg"
+         alt="Historical funeral car, Nova Scotia Archives Transportation &amp; Communication Collection"
+         class="excerpt-img" />
+    <p class="excerpt-text"><i>"Death is our collective destination. Everyone will die, and every body returns to the earth. But the lives we live between our time spent as ashes and dust separate us from each other in countless ways.</p>
+    <p class="excerpt-text">Even after we draw our last breath, how we have lived our lives shapes how we are treated in death. Our posthumous treatment, specifically how our remains are handled and how we are remembered, is shaped by our access to wealth and experiences of poverty."</i></p>
+    <a href="https://estfrancis.substack.com/p/known-only-in-death" class="paper-link" target="_blank" rel="noopener">Continue reading on Substack ↗</a>
+  </div>
+</div>
 
 
         </div>
@@ -917,6 +973,34 @@
 
 
           <a href="/Papers/sacred civics_DMcGregor_ENelson.pdf" download="sacred civics_DMcGregor_ENelson" class="paper-link">Download the pdf ↓</a>
+          &ensp;
+          <a href="https://www.routledge.com/Sacred-Civics-Building-Seven-Generation-Cities/Engle-Agyeman-Chung-Tiam-Fook/p/book/9781032059112" class="paper-link" target="_blank" rel="noopener">Open access / purchase ↗</a>
+          &ensp;
+          <button class="paper-link excerpt-btn" data-target="excerpt-02">Read an excerpt ↓</button>
+          <div class="excerpt-panel" id="excerpt-02">
+            <div class="excerpt-inner excerpt-inner--side">
+              <img src="https://covers.openlibrary.org/b/isbn/9781032059112-L.jpg"
+                   alt="Sacred Civics: Building Seven Generation Cities book cover"
+                   class="excerpt-img" style="background: var(--surface);" />
+              <div class="excerpt-text-wrap">
+              <p class="excerpt-text"><i>"Canada has yet to adequately address the ongoing impacts of settler colonialism on
+Indigenous communities. City planning has played a large role in land and societal
+development driven by settler colonialism in this country (Roy 2006; Stranger-​Ross
+2008). Planners, as counsel to private developers, employees of municipal or provincial
+governments, or practitioners at non-​profit organizations, can and often do perpetuate
+unacknowledged tenets of settler colonialism. This is especially prevalent in the valuing
+and usage of land. As a planning student, I (Nelson) searched for a way to engage with
+the history of the land, knowing that the past uses of a particular plot of land determine
+its future uses (i.e., is it a “brown site”? Are there pre-​existing structures with “heritage
+value”?). If planners are truly committed to responding to the TRC’s recommendations
+(2015b), we must also explore how human history—​settler colonialism in particular—​can
+be considered in the development of land. Opportunities for such engagement within the
+planning field are few and far between, but recognition of an area’s history often comes in
+the form of Land Acknowledgements.</i></p>
+              <a href="https://www.routledge.com/Sacred-Civics-Building-Seven-Generation-Cities/Engle-Agyeman-Chung-Tiam-Fook/p/book/9781032059112" class="paper-link" target="_blank" rel="noopener">View book on Routledge ↗</a>
+              </div><!-- /.excerpt-text-wrap -->
+            </div>
+          </div>
 
 
         </div>
@@ -1185,23 +1269,120 @@
     window.addEventListener('scroll', updateProgress, { passive: true });
     updateProgress();
 
-    /* HERO LINE ANIMATION (JS for reliability) */
+    /* EXCERPT TOGGLES */
+    document.querySelectorAll('.excerpt-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const panel = document.getElementById(btn.dataset.target);
+        const isOpen = panel.classList.toggle('open');
+        btn.textContent = isOpen ? 'Close excerpt ↑' : 'Read an excerpt ↓';
+      });
+    });
+
+    /* TRAIN DOTS */
+    (function() {
+      const heroLines = document.querySelector('.hero-lines');
+      if (!heroLines) return;
+
+      function parsePts(el) {
+        const n = el.getAttribute('points').trim().split(/[\s,]+/).map(Number);
+        const pts = [];
+        for (let i = 0; i < n.length - 1; i += 2) pts.push({ x: n[i], y: n[i+1] });
+        return pts;
+      }
+
+      function totalLen(pts) {
+        let l = 0;
+        for (let i = 1; i < pts.length; i++) l += Math.hypot(pts[i].x-pts[i-1].x, pts[i].y-pts[i-1].y);
+        return l;
+      }
+
+      function ptAt(pts, dist) {
+        let rem = dist;
+        for (let i = 1; i < pts.length; i++) {
+          const dx = pts[i].x - pts[i-1].x, dy = pts[i].y - pts[i-1].y;
+          const seg = Math.hypot(dx, dy);
+          if (rem <= seg) { const t = rem/seg; return { x: pts[i-1].x+dx*t, y: pts[i-1].y+dy*t }; }
+          rem -= seg;
+        }
+        return pts[pts.length-1];
+      }
+
+      /* Build overlay SVG — hidden until line draw animation completes */
+      const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+      svg.setAttribute('viewBox', '0 0 1000 600');
+      svg.setAttribute('preserveAspectRatio', 'xMaxYMid meet');
+      svg.classList.add('hero-trains');
+      svg.style.opacity = '0';
+      svg.style.transition = 'opacity 0.4s ease';
+      heroLines.parentNode.insertBefore(svg, heroLines.nextSibling);
+      setTimeout(() => { svg.style.opacity = '1'; }, 2000);
+
+      const polylines = heroLines.querySelectorAll('polyline');
+
+      /* Four trains across all lines, each a different speed */
+      const config = [
+        { idx: 0, color: '#c0392b', dur: 11000, offset: 0.0  },  // red — fastest
+        { idx: 1, color: '#4fa8c4', dur: 22000, offset: 0.45 },  // teal — medium
+        { idx: 2, color: '#e8b84b', dur: 32000, offset: 0.2  },  // gold — slow
+        { idx: 4, color: '#4fa8c4', dur: 16000, offset: 0.7  },  // teal 2 — medium-fast
+      ];
+
+      const trains = config.map(({ idx, color, dur, offset }) => {
+        const pts = parsePts(polylines[idx]);
+        const len = totalLen(pts);
+        const circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+        circle.setAttribute('r', '5');
+        circle.setAttribute('fill', '#fff');
+        circle.setAttribute('stroke', color);
+        circle.setAttribute('stroke-width', '2.5');
+        svg.appendChild(circle);
+        return { pts, len, dur, t: offset, circle };
+      });
+
+      let prev = null;
+      function tick(ts) {
+        const dt = prev ? ts - prev : 0;
+        prev = ts;
+        trains.forEach(tr => {
+          tr.t = (tr.t + dt / tr.dur) % 1;
+          const p = ptAt(tr.pts, tr.t * tr.len);
+          tr.circle.setAttribute('cx', p.x);
+          tr.circle.setAttribute('cy', p.y);
+        });
+        requestAnimationFrame(tick);
+      }
+      requestAnimationFrame(tick);
+    })();
+
+    /* HERO LINE ANIMATION */
+    function polylineLength(el) {
+      if (typeof el.getTotalLength === 'function') return el.getTotalLength();
+      const nums = el.getAttribute('points').trim().split(/[\s,]+/).map(Number);
+      let len = 0;
+      for (let i = 2; i < nums.length; i += 2)
+        len += Math.hypot(nums[i] - nums[i-2], nums[i+1] - nums[i-1]);
+      return len;
+    }
+
     window.addEventListener('load', () => {
       document.querySelectorAll('.hero-lines polyline').forEach((line, i) => {
-        const len = line.getTotalLength();
+        const len = polylineLength(line);
+        /* 1. Set initial state with no transition */
+        line.style.transition = 'none';
         line.style.strokeDasharray  = len;
         line.style.strokeDashoffset = len;
-        line.style.transition = 'stroke-dashoffset 1.0s ease ' + (i * 0.17) + 's';
-        requestAnimationFrame(() => requestAnimationFrame(() => {
-          line.style.strokeDashoffset = '0';
-        }));
+        /* 2. Force the browser to register the initial value */
+        void line.getBoundingClientRect();
+        /* 3. Now apply transition and animate to 0 */
+        line.style.transition = 'stroke-dashoffset 1.1s ease ' + (i * 0.18) + 's';
+        line.style.strokeDashoffset = '0';
       });
       document.querySelectorAll('.hero-lines circle').forEach((c, i) => {
+        c.style.transition = 'none';
         c.style.opacity = '0';
-        c.style.transition = 'opacity 0.3s ease ' + (0.22 + i * 0.09) + 's';
-        requestAnimationFrame(() => requestAnimationFrame(() => {
-          c.style.opacity = '1';
-        }));
+        void c.getBoundingClientRect();
+        c.style.transition = 'opacity 0.35s ease ' + (0.25 + i * 0.1) + 's';
+        c.style.opacity = '1';
       });
     });
   </script>
