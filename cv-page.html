@@ -9,7 +9,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
 
   <style>
-    /* ─── THEME VARIABLES (identical to index) ─── */
+    /* ─── THEME VARIABLES ─── */
     :root,
     [data-theme="dark"] {
       --bg:         #0d1117;
@@ -73,7 +73,7 @@
       transition: background 0.4s, color 0.4s;
     }
 
-    /* ─── NAV (identical to index) ─── */
+    /* ─── NAV ─── */
     nav {
       position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
       display: flex; justify-content: space-between; align-items: center;
@@ -93,7 +93,6 @@
     }
 
     .nav-right { display: flex; align-items: center; gap: 1.8rem; }
-
     .nav-links { display: flex; gap: 0; list-style: none; }
 
     .nav-links a {
@@ -131,7 +130,7 @@
 
     /* ─── PAGE WRAPPER ─── */
     .cv-page {
-      max-width: 960px;
+      max-width: 980px;
       margin: 0 auto;
       padding: 7rem 2.5rem 5rem;
     }
@@ -144,9 +143,7 @@
       margin-bottom: 2rem;
     }
 
-    .cv-toolbar-left {
-      display: flex; align-items: center; gap: 0.6rem;
-    }
+    .cv-toolbar-left { display: flex; align-items: center; gap: 0.6rem; }
 
     .rivet {
       width: 7px; height: 7px; border-radius: 50%;
@@ -165,9 +162,7 @@
 
     .cv-breadcrumb-sep {
       font-family: 'Space Grotesk', sans-serif;
-      font-size: 0.72rem;
-      color: var(--dim);
-      padding: 0 0.3rem;
+      font-size: 0.72rem; color: var(--dim); padding: 0 0.3rem;
     }
 
     .cv-breadcrumb-current {
@@ -199,14 +194,10 @@
       transition: background 0.4s, border-color 0.4s;
     }
 
-    /* Corner accent marks */
     #cv-paper::before,
     #cv-paper::after {
-      content: '';
-      position: absolute;
-      width: 16px; height: 16px;
+      content: ''; position: absolute; width: 16px; height: 16px;
     }
-
     #cv-paper::before { top: -1px; left: -1px; border-top: 2px solid var(--line-teal); border-left: 2px solid var(--line-teal); }
     #cv-paper::after  { bottom: -1px; right: -1px; border-bottom: 2px solid var(--line-teal); border-right: 2px solid var(--line-teal); }
 
@@ -218,7 +209,7 @@
       text-align: center;
       letter-spacing: -0.02em;
       line-height: 1.1;
-      margin-bottom: 0.9rem;
+      margin-bottom: 0.75rem;
       color: var(--text);
       transition: color 0.4s;
     }
@@ -231,126 +222,182 @@
       font-family: 'Inter', sans-serif;
       font-size: 0.85rem;
       color: var(--muted);
-      margin-bottom: 2.8rem;
+      margin-bottom: 0;
       gap: 0;
     }
 
-    .cv-contact span { padding: 0 1.1rem; }
+    .cv-contact span { padding: 0 1rem; }
 
-    .cv-contact span:not(:last-child) {
-      border-right: 1px solid var(--rule);
-    }
+    .cv-contact span:not(:last-child) { border-right: 1px solid var(--rule); }
 
     .cv-contact a { color: inherit; text-decoration: none; transition: color 0.2s; }
     .cv-contact a:hover { color: var(--accent); }
 
-    /* ─── CV SECTIONS ─── */
-    .cv-section {
-      display: grid;
-      grid-template-columns: 140px 1fr;
-      gap: 0 2rem;
+    .cv-header-rule {
+      border: none;
       border-top: 1px solid var(--rule);
-      padding-bottom: 0.25rem;
+      margin: 1.5rem 0 0;
     }
 
-    .cv-section:last-child {
-      border-bottom: 1px solid var(--rule);
-    }
-
-    .cv-section-label {
-      padding-top: 1.1rem;
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: 0.66rem;
-      font-weight: 600;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-      color: var(--accent);
-      line-height: 1.4;
-      transition: color 0.4s;
-    }
-
-    /* ─── ENTRY ROWS ─── */
-    .cv-entries { padding-left: 0; }
-
-    .cv-row {
-      position: relative;
+    /* ─── TWO-COLUMN BODY ─── */
+    .cv-body {
       display: grid;
-      grid-template-columns: 1fr auto;
-      gap: 0 1.4rem;
-      padding: 0.85rem 0 0.2rem;
+      grid-template-columns: 220px 1fr;
+      gap: 0 2.8rem;
+      margin-top: 1.8rem;
       align-items: start;
     }
 
-    .cv-row.sub {
-      padding-top: 0.05rem;
-      padding-bottom: 0.45rem;
+    /* ─── COLUMN SECTIONS ─── */
+    .cv-col-section {
+      margin-bottom: 1.9rem;
     }
 
-    .cv-row.sub .cv-date { display: none; }
+    .cv-col-section:last-child { margin-bottom: 0; }
 
-    .cv-row.group-start { padding-top: 1.1rem; }
-
-    .cv-content {
-      font-family: 'Inter', sans-serif;
-      font-size: 0.95rem;
-      line-height: 1.65;
-      color: var(--text);
-      transition: color 0.4s;
-    }
-
-    .cv-row.sub .cv-content {
-      font-style: italic;
-      font-size: 0.9rem;
-      color: var(--muted);
-    }
-
-    .cv-date {
+    .cv-col-heading {
       font-family: 'Space Grotesk', sans-serif;
-      font-size: 0.72rem;
-      font-weight: 500;
-      color: var(--muted);
-      white-space: nowrap;
-      text-align: right;
-      padding-top: 0.2rem;
-      letter-spacing: 0.06em;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent);
+      border-bottom: 1px solid var(--rule);
+      padding-bottom: 0.4rem;
+      margin-bottom: 1rem;
+      transition: color 0.4s, border-color 0.4s;
+    }
+
+    /* ─── EDUCATION ─── */
+    .cv-edu-entry {
+      margin-bottom: 1.1rem;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.92rem;
+      line-height: 1.5;
+    }
+
+    .cv-edu-entry:last-child { margin-bottom: 0; }
+
+    .cv-edu-degree {
+      font-weight: 600;
+      color: var(--text);
+      display: block;
       transition: color 0.4s;
     }
 
-    .cv-title      { font-weight: 600; }
-    .cv-title-italic { font-weight: 600; font-style: italic; }
-    .cv-org        { font-style: italic; color: var(--muted); }
+    .cv-edu-sub {
+      font-style: italic;
+      color: var(--muted);
+      display: block;
+      transition: color 0.4s;
+    }
 
-    .cv-location {
+    .cv-edu-org {
+      color: var(--text);
+      display: block;
+      transition: color 0.4s;
+    }
+
+    .cv-edu-date {
+      color: var(--muted);
+      display: block;
+      transition: color 0.4s;
+    }
+
+    /* ─── BULLET LISTS (skills / interests) ─── */
+    .cv-bullet-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .cv-bullet-list li {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.92rem;
+      color: var(--muted);
+      line-height: 1.55;
+      padding-left: 1rem;
+      position: relative;
+      margin-bottom: 0.1rem;
+      transition: color 0.4s;
+    }
+
+    .cv-bullet-list li::before {
+      content: '•';
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+    }
+
+    /* ─── EXPERIENCE ─── */
+    .cv-exp-entry {
+      margin-bottom: 1.3rem;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.92rem;
+      line-height: 1.5;
+    }
+
+    .cv-exp-entry:last-child { margin-bottom: 0; }
+
+    .cv-exp-title-line { color: var(--text); transition: color 0.4s; }
+    .cv-exp-role { font-weight: 600; }
+
+    .cv-exp-date {
       display: block;
       font-style: italic;
       font-size: 0.88rem;
       color: var(--muted);
+      margin-bottom: 0.25rem;
+      transition: color 0.4s;
     }
 
-    /* ─── LIST ROWS ─── */
-    .cv-list-entries {
-      display: flex;
-      flex-wrap: wrap;
-      padding: 0.7rem 0 0.7rem;
+    .cv-exp-bullets {
+      list-style: none;
+      padding: 0;
+      margin: 0;
     }
 
-    .cv-list-row {
-      width: 100%;
-      padding: 0.15rem 0;
+    .cv-exp-bullets li {
       font-family: 'Inter', sans-serif;
-      font-size: 0.95rem;
+      font-size: 0.9rem;
+      color: var(--muted);
+      line-height: 1.55;
+      padding-left: 1rem;
+      position: relative;
+      margin-bottom: 0.15rem;
+      transition: color 0.4s;
+    }
+
+    .cv-exp-bullets li::before {
+      content: '•';
+      position: absolute;
+      left: 0;
+      color: var(--dim);
+    }
+
+    /* ─── PUBLICATIONS ─── */
+    .cv-pub-entry {
+      margin-bottom: 1rem;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.92rem;
       line-height: 1.5;
       color: var(--text);
       transition: color 0.4s;
     }
 
-    .cv-list-row.half { width: 50%; }
+    .cv-pub-entry:last-child { margin-bottom: 0; }
 
-    /* Hidden rows */
-    .cv-row[data-visible="false"]     { display: none; }
-    .cv-list-row[data-visible="false"] { display: none; }
+    .cv-pub-role { font-weight: 600; }
 
-    /* Links within CV */
+    .cv-pub-date {
+      display: block;
+      font-style: italic;
+      font-size: 0.88rem;
+      color: var(--muted);
+      transition: color 0.4s;
+    }
+
+    /* ─── LINKS WITHIN CV PAPER ─── */
     #cv-paper a {
       color: var(--accent2);
       text-decoration: none;
@@ -394,16 +441,13 @@
       .nav-toggle { display: block; }
       .cv-page { padding: 6rem 1.2rem 4rem; }
       #cv-paper { padding: 2rem 1.5rem 2.5rem; }
-      .cv-section { grid-template-columns: 1fr; }
-      .cv-section-label { padding-top: 1rem; padding-bottom: 0.3rem; border-bottom: 1px solid var(--rule2); }
-      .cv-list-row.half { width: 50%; }
+      .cv-body { grid-template-columns: 1fr; gap: 0; }
       footer { flex-direction: column; gap: 0.7rem; text-align: center; }
     }
 
     @media (max-width: 480px) {
       .cv-contact { font-size: 0.78rem; }
       .cv-contact span { padding: 0 0.6rem; }
-      .cv-list-row.half { width: 100%; }
     }
 
     /* ═══════════════════════════════════════════
@@ -413,8 +457,8 @@
       html, body {
         background: #ffffff !important;
         color: #181816 !important;
-        font-size: 11pt !important;
-        line-height: 1.5 !important;
+        font-size: 10.5pt !important;
+        line-height: 1.45 !important;
       }
 
       nav         { display: none !important; }
@@ -429,9 +473,8 @@
 
       #cv-paper {
         border: none !important;
-        box-shadow: none !important;
         background: #ffffff !important;
-        padding: 0.3in 0.5in 0.4in !important;
+        padding: 0.25in 0.45in 0.35in !important;
         margin: 0 !important;
       }
 
@@ -439,80 +482,71 @@
       #cv-paper::after { display: none !important; }
 
       .cv-name {
-        font-size: 28pt !important;
+        font-size: 24pt !important;
         color: #181816 !important;
-        margin-bottom: 6pt !important;
+        margin-bottom: 5pt !important;
       }
 
       .cv-contact {
-        font-size: 9.5pt !important;
-        color: #3a3a32 !important;
-        margin-bottom: 16pt !important;
-        letter-spacing: 0.06em !important;
-      }
-
-      .cv-contact span { border-right-color: #aaa !important; }
-
-      .cv-section {
-        grid-template-columns: 110pt 1fr !important;
-        border-top-color: #181816 !important;
-        border-top-width: 1pt !important;
-        break-inside: avoid;
-      }
-
-      .cv-section:last-child {
-        border-bottom-color: #181816 !important;
-        border-bottom-width: 1pt !important;
-      }
-
-      .cv-section-label {
-        font-size: 7.5pt !important;
-        color: #181816 !important;
-        letter-spacing: 0.14em !important;
-        padding-top: 9pt !important;
-      }
-
-      .cv-row  { padding: 6pt 0 2pt !important; break-inside: avoid; }
-      .cv-row.group-start { padding-top: 9pt !important; }
-      .cv-row.sub { padding-top: 1pt !important; padding-bottom: 3pt !important; }
-
-      .cv-content {
-        font-size: 11pt !important;
-        color: #181816 !important;
-        line-height: 1.45 !important;
-      }
-
-      .cv-row.sub .cv-content {
-        color: #3e3e34 !important;
-        font-size: 10.5pt !important;
-      }
-
-      .cv-date {
         font-size: 9pt !important;
-        color: #5e5e54 !important;
+        color: #3a3a32 !important;
+        margin-bottom: 0 !important;
       }
 
-      .cv-list-entries { padding: 5pt 0 6pt !important; }
+      .cv-contact span { border-right-color: #bbb !important; }
 
-      .cv-list-row {
-        font-size: 11pt !important;
+      .cv-header-rule { border-top-color: #181816 !important; margin: 10pt 0 0 !important; }
+
+      .cv-body {
+        grid-template-columns: 155pt 1fr !important;
+        gap: 0 18pt !important;
+        margin-top: 10pt !important;
+      }
+
+      .cv-col-heading {
+        font-size: 7pt !important;
         color: #181816 !important;
-        padding: 1pt 0 !important;
+        border-bottom-color: #181816 !important;
+        padding-bottom: 2pt !important;
+        margin-bottom: 5pt !important;
+        letter-spacing: 0.14em !important;
+      }
+
+      .cv-col-section { margin-bottom: 12pt !important; }
+
+      .cv-edu-entry { margin-bottom: 7pt !important; font-size: 10.5pt !important; }
+      .cv-edu-degree { color: #181816 !important; }
+      .cv-edu-sub { color: #3e3e34 !important; }
+      .cv-edu-org { color: #181816 !important; }
+      .cv-edu-date { color: #5e5e54 !important; }
+
+      .cv-bullet-list li {
+        font-size: 10.5pt !important;
+        color: #181816 !important;
+        margin-bottom: 1pt !important;
         line-height: 1.4 !important;
       }
 
+      .cv-bullet-list li::before { color: #181816 !important; }
+
+      .cv-exp-entry { margin-bottom: 9pt !important; font-size: 10.5pt !important; }
+      .cv-exp-title-line { color: #181816 !important; }
+      .cv-exp-date { color: #5e5e54 !important; font-size: 10pt !important; }
+      .cv-exp-bullets li { font-size: 10.5pt !important; color: #181816 !important; line-height: 1.4 !important; }
+      .cv-exp-bullets li::before { color: #181816 !important; }
+
+      .cv-pub-entry { font-size: 10.5pt !important; color: #181816 !important; margin-bottom: 7pt !important; }
+      .cv-pub-date { color: #5e5e54 !important; font-size: 10pt !important; }
+
       #cv-paper a {
-        color: #3a3a32 !important;
+        color: #181816 !important;
         border-bottom: none !important;
         text-decoration: none !important;
       }
 
-      .cv-row[data-visible="false"],
-      .cv-list-row[data-visible="false"] { display: none !important; }
-
       @page {
         size: letter portrait;
-        margin: 0.55in 0.5in;
+        margin: 0.5in 0.45in;
       }
     }
   </style>
@@ -527,7 +561,6 @@
       <ul class="nav-links" id="nl">
         <li><a href="index.html#about">About</a></li>
         <li><a href="cv-page.html" class="active">CV</a></li>
-        <li><a href="index.html#research">Research</a></li>
         <li><a href="papers-page.html">Papers</a></li>
         <li><a href="index.html#projects">Projects</a></li>
         <li><a href="index.html#podcast">Podcast</a></li>
@@ -579,316 +612,294 @@
       <div class="cv-contact">
         <span>Halifax, NS</span>
         <span><a href="mailto:emma.nelson@dal.ca">emma.nelson@dal.ca</a></span>
+        <span>(647) 916 4416</span>
+        <span><a href="https://emmastfrancis.github.io">emmastfrancis.github.io</a></span>
       </div>
+      <hr class="cv-header-rule" />
 
-      <!-- ── EDUCATION ── -->
-      <div class="cv-section">
-        <div class="cv-section-label">Education</div>
-        <div class="cv-entries">
+      <!-- Two-column body -->
+      <div class="cv-body">
 
-          <div class="cv-row" data-id="edu-phd" data-visible="true">
-            <div class="cv-content">
-              <span class="cv-title">PhD, Sociology</span><span class="cv-title-italic"> (in progress)</span><br>
-              <span class="cv-org">Dalhousie University, Halifax NS</span>
+        <!-- ── LEFT COLUMN ── -->
+        <div class="cv-col-left">
+
+          <!-- Education -->
+          <section class="cv-col-section">
+            <h3 class="cv-col-heading">Education</h3>
+
+            <div class="cv-edu-entry">
+              <span class="cv-edu-degree">PhD, Sociology <em style="font-weight:400;">(in progress)</em></span>
+              <span class="cv-edu-org">Dalhousie University</span>
+              <span class="cv-edu-date">2025 – present</span>
             </div>
-            <div class="cv-date">Sept 2025–current</div>
-          </div>
 
-          <div class="cv-row sub" data-id="edu-phd-courses" data-visible="false">
-            <div class="cv-content">Courses TA'd: [add course names here]</div>
-          </div>
-
-          <div class="cv-row group-start" data-id="edu-masters" data-visible="true">
-            <div class="cv-content">
-              <span class="cv-title">Master's, Environmental Studies</span><br>
-              <span class="cv-title">Diploma, Planning and Environmental Education</span><br>
-              <span class="cv-org">York University, Toronto ON</span>
+            <div class="cv-edu-entry">
+              <span class="cv-edu-degree">Master, Environmental Studies</span>
+              <span class="cv-edu-sub">Diploma, Community Planning</span>
+              <span class="cv-edu-sub">Diploma, Environmental Education</span>
+              <span class="cv-edu-org">York University</span>
+              <span class="cv-edu-date">2018–2020</span>
             </div>
-            <div class="cv-date">Feb 2021</div>
-          </div>
 
-          <div class="cv-row group-start" data-id="edu-ma" data-visible="true">
-            <div class="cv-content">
-              <span class="cv-title">M.A. English</span><br>
-              <span class="cv-org">York University, Toronto ON</span>
+            <div class="cv-edu-entry">
+              <span class="cv-edu-degree">Master, English</span>
+              <span class="cv-edu-org">York University</span>
+              <span class="cv-edu-date">2017–2018</span>
             </div>
-            <div class="cv-date">Dec 2018</div>
-          </div>
 
-          <div class="cv-row group-start" data-id="edu-ba" data-visible="true">
-            <div class="cv-content">
-              <span class="cv-title">B.A. English Literature</span><br>
-              <span class="cv-title">Minor, Women, Gender, and Sexuality Studies</span><br>
-              <span class="cv-org">Montana State University, Bozeman MT</span>
+            <div class="cv-edu-entry">
+              <span class="cv-edu-degree">Bachelor, English Literature</span>
+              <span class="cv-edu-sub">Minor, Gender Studies</span>
+              <span class="cv-edu-org">Montana State University</span>
+              <span class="cv-edu-date">2013–2017</span>
             </div>
-            <div class="cv-date">May 2017</div>
-          </div>
+          </section>
 
-          <div class="cv-row sub" data-id="edu-ba-honors" data-visible="true">
-            <div class="cv-content">Honors, Summa Cum Laude</div>
-          </div>
+          <!-- Awards -->
+          <section class="cv-col-section">
+            <h3 class="cv-col-heading">Awards</h3>
 
-        </div>
-      </div>
-
-      <!-- ── AWARDS ── -->
-      <div class="cv-section">
-        <div class="cv-section-label">Awards</div>
-        <div class="cv-entries">
-
-          <div class="cv-row" data-id="award-openthink" data-visible="true">
-            <div class="cv-content">OpenThink Cohort</div>
-            <div class="cv-date">2026–2027</div>
-          </div>
-
-          <div class="cv-row" data-id="award-presidents-dal" data-visible="true">
-            <div class="cv-content">President's Award, Dalhousie University</div>
-            <div class="cv-date">2025–2027</div>
-          </div>
-
-          <div class="cv-row" data-id="award-sshrc-doctoral" data-visible="true">
-            <div class="cv-content">SSHRC Canadian Graduate Scholarship Doctoral</div>
-            <div class="cv-date">Sept 2025</div>
-          </div>
-
-          <div class="cv-row" data-id="award-mes-thesis" data-visible="true">
-            <div class="cv-content">MES Thesis nominated for Outstanding Paper Series</div>
-            <div class="cv-date">Feb 2020</div>
-          </div>
-
-          <div class="cv-row" data-id="award-sshrc-engage" data-visible="true">
-            <div class="cv-content">SSHRC Partnership Engage Grant</div>
-            <div class="cv-date">Feb 2020</div>
-          </div>
-
-          <div class="cv-row" data-id="award-sshrc-cgs" data-visible="true">
-            <div class="cv-content">SSHRC Joseph-Armand Bombardier CGS Master's Scholarship</div>
-            <div class="cv-date">Sept 2019–Sept 2020</div>
-          </div>
-
-          <div class="cv-row" data-id="award-york-fellowship" data-visible="true">
-            <div class="cv-content">York Graduate Fellowship</div>
-            <div class="cv-date">Sept 2017–May 2019</div>
-          </div>
-
-          <div class="cv-row" data-id="award-york-scholarship" data-visible="true">
-            <div class="cv-content">York Graduate Scholarship</div>
-            <div class="cv-date">Sept 2017–May 2019</div>
-          </div>
-
-          <div class="cv-row" data-id="award-inkling" data-visible="true">
-            <div class="cv-content">Inkling Award</div>
-            <div class="cv-date">May 2016</div>
-          </div>
-
-          <div class="cv-row" data-id="award-msu-presidents" data-visible="true">
-            <div class="cv-content">Montana State University President's Scholarship</div>
-            <div class="cv-date">Sept 2013</div>
-          </div>
-
-        </div>
-      </div>
-
-      <!-- ── WORK EXPERIENCE ── -->
-      <div class="cv-section">
-        <div class="cv-section-label">Work Experience</div>
-        <div class="cv-entries">
-
-          <div class="cv-row" data-id="work-ta" data-visible="true">
-            <div class="cv-content">
-              <span class="cv-title">Teaching Assistant,</span> Dalhousie University
+            <div class="cv-edu-entry">
+              <span class="cv-edu-degree">SSHRC CGS Doctoral</span>
+              <span class="cv-edu-date">2025 – 2028</span>
             </div>
-            <div class="cv-date">Sept 2025–current</div>
-          </div>
-          <div class="cv-row sub" data-id="work-ta-detail" data-visible="true">
-            <div class="cv-content">Grading and advising for 3000-level courses.</div>
-          </div>
-          <div class="cv-row sub" data-id="work-ta-courses" data-visible="false">
-            <div class="cv-content">Courses: [add course names here]</div>
-          </div>
 
-          <div class="cv-row group-start" data-id="work-tutor" data-visible="true">
-            <div class="cv-content">
-              <span class="cv-title">Writing Tutor,</span> <span class="cv-org">Dalhousie University Writing Centre</span>
+            <div class="cv-edu-entry">
+              <span class="cv-edu-degree">Dalhousie President's Award</span>
+              <span class="cv-edu-date">2025 – 2027</span>
             </div>
-            <div class="cv-date">Sept 2025–current</div>
-          </div>
-          <div class="cv-row sub" data-id="work-tutor-detail" data-visible="true">
-            <div class="cv-content">Assisting students with all stages of writing from undergrad to doctoral levels.</div>
-          </div>
 
-          <div class="cv-row group-start" data-id="work-cafe" data-visible="true">
-            <div class="cv-content">
-              <span class="cv-title">Owner-operator,</span> <span class="cv-org">Cardamom Pod Cafe</span>
+            <div class="cv-edu-entry">
+              <span class="cv-edu-degree">MES thesis nominated for Outstanding Paper Series</span>
+              <span class="cv-edu-date">Feb 2020</span>
             </div>
-            <div class="cv-date">Feb 2024–Aug 2025</div>
-          </div>
-          <div class="cv-row sub" data-id="work-cafe-detail" data-visible="true">
-            <div class="cv-content">Self-employed through co-owned and operated cafe business in Pugwash, NS. Successfully posted profits after first year, hosted community events throughout year and beyond summer season. Head barista and baker, social media manager.</div>
-          </div>
 
-          <div class="cv-row group-start" data-id="work-baker" data-visible="true">
-            <div class="cv-content">
-              <span class="cv-title">Baker,</span> <span class="cv-org">Earltown General Store</span>
-              <span class="cv-location">Earltown, NS</span>
+            <div class="cv-edu-entry">
+              <span class="cv-edu-degree">SSHRC Partnership Engage</span>
+              <span class="cv-edu-date">Feb 2020</span>
             </div>
-            <div class="cv-date">Sept 2022–April 2023</div>
-          </div>
 
-          <div class="cv-row group-start" data-id="work-postal" data-visible="true">
-            <div class="cv-content">
-              <span class="cv-title">Rural Mail Carrier and Term Clerk,</span> <span class="cv-org">Canada Post</span>
-              <span class="cv-location">Tatamagouche, Oxford, Port Howe, Collingwood, and Pugwash, NS</span>
+            <div class="cv-edu-entry">
+              <span class="cv-edu-degree">SSHRC CGS Master's</span>
+              <span class="cv-edu-date">2019 – 2020</span>
             </div>
-            <div class="cv-date">Oct 2021–May 2024</div>
-          </div>
 
-          <div class="cv-row group-start" data-id="work-gis" data-visible="true">
-            <div class="cv-content">
-              <span class="cv-title">GIS Researcher/Project Manager,</span> York University
-              <span class="cv-location">Toronto, ON</span>
+            <div class="cv-edu-entry">
+              <span class="cv-edu-degree">York Graduate Fellowship</span>
+              <span class="cv-edu-date">2017 – 2019</span>
             </div>
-            <div class="cv-date">Jul–Dec 2020</div>
-          </div>
-          <div class="cv-row sub" data-id="work-gis-detail" data-visible="true">
-            <div class="cv-content">Create database of Indigenous land holdings throughout the early colonial history and use GIS to develop a map depicting the growth of Canada's landbase.</div>
-          </div>
 
-          <div class="cv-row group-start" data-id="work-ra" data-visible="true">
-            <div class="cv-content">
-              <span class="cv-title">Research Assistant,</span> York University/City of Toronto
-              <span class="cv-location">Toronto, ON</span>
+            <div class="cv-edu-entry">
+              <span class="cv-edu-degree">York Graduate Scholarship</span>
+              <span class="cv-edu-date">2017 – 2019</span>
             </div>
-            <div class="cv-date">Feb–Oct 2020</div>
-          </div>
-          <div class="cv-row sub" data-id="work-ra-detail" data-visible="true">
-            <div class="cv-content">Successfully secured SSHRC funding for joint university-City study on animosity towards homeless shelter services. Included interviews with local experts and service providers, developing team project schedule, drafting and editing final report for City, and presenting findings to City departments.</div>
-          </div>
 
-        </div>
-      </div>
-
-      <!-- ── PUBLICATIONS & PRESENTATIONS ── -->
-      <div class="cv-section">
-        <div class="cv-section-label">Publications &amp; Presentations</div>
-        <div class="cv-entries">
-
-          <div class="cv-row" data-id="pub-csa-radical-2026" data-visible="true">
-            <div class="cv-content">
-              <span class="cv-title">Presenter</span>, CSA, "Return of the 'Radical': How the History of Nova Scotian Midwifery Can Inform Feminist Organizing"
+            <div class="cv-edu-entry">
+              <span class="cv-edu-degree">Inkling Award</span>
+              <span class="cv-edu-date">May 2016</span>
             </div>
-            <div class="cv-date">June 2026</div>
-          </div>
 
-          <div class="cv-row" data-id="pub-csa-mapping-2026" data-visible="true">
-            <div class="cv-content">
-              <span class="cv-title">Presenter</span>, CSA, "Mapping Memories: An Interactive Method to Recover, Visualize, and Celebrate Midwifery's History in Nova Scotia"
+            <div class="cv-edu-entry">
+              <span class="cv-edu-degree">Montana State University President's Scholarship</span>
+              <span class="cv-edu-date">Sept 2013</span>
             </div>
-            <div class="cv-date">June 2026</div>
-          </div>
+          </section>
 
-          <div class="cv-row" data-id="pub-casca-2026" data-visible="true">
-            <div class="cv-content">
-              <span class="cv-title">Presenter</span>, CASCA, "Is there a place for contemplative practice in anthropology?: On silence, listening, and hearing in the field"
+          <!-- Skills -->
+          <section class="cv-col-section">
+            <h3 class="cv-col-heading">Skills</h3>
+            <ul class="cv-bullet-list">
+              <li>Qualitative methods</li>
+              <li>Multiple regression analysis</li>
+              <li>Designing visuals (interactive, graphic design, textile art)</li>
+              <li>Digital mapping</li>
+              <li>Grant writing</li>
+            </ul>
+          </section>
+
+          <!-- Software familiarity -->
+          <section class="cv-col-section">
+            <h3 class="cv-col-heading">Software familiarity</h3>
+            <ul class="cv-bullet-list">
+              <li>Linux</li>
+              <li>QGIS</li>
+              <li>Stata 18</li>
+              <li>NVivo / hand coding</li>
+              <li>Excel (intermediate)</li>
+              <li>InDesign</li>
+              <li>LaTeX, VS Code</li>
+              <li>Microsoft &amp; Google suites</li>
+              <li>Canva</li>
+              <li>Social media management (major platforms)</li>
+            </ul>
+          </section>
+
+          <!-- Interests -->
+          <section class="cv-col-section">
+            <h3 class="cv-col-heading">Interests</h3>
+            <ul class="cv-bullet-list">
+              <li>Midwifery / birth care</li>
+              <li>Death care / death cultures</li>
+              <li>Rites of passage</li>
+              <li>Ritual</li>
+              <li>Professionalization</li>
+              <li>Medicalization</li>
+              <li>Nursing history</li>
+              <li>Policy development</li>
+              <li>Material cultures</li>
+              <li>Participant-driven research</li>
+              <li>Alternative / visual methods</li>
+            </ul>
+          </section>
+
+        </div><!-- end cv-col-left -->
+
+        <!-- ── RIGHT COLUMN ── -->
+        <div class="cv-col-right">
+
+          <!-- Experience -->
+          <section class="cv-col-section">
+            <h3 class="cv-col-heading">Experience</h3>
+
+            <div class="cv-exp-entry">
+              <div class="cv-exp-title-line"><span class="cv-exp-role">Research assistant</span> — Dalhousie University and InclusionNS</div>
+              <span class="cv-exp-date">July 2026 – ongoing</span>
+              <ul class="cv-exp-bullets">
+                <li>Supported by MITACS Accelerate</li>
+                <li>Scoping review of deinstitutionalization of community living facilities for people with mental disabilities across Canada</li>
+                <li>Second phase planned for 2027: interviewing community members and providers, data analysis, presentation and publication of results</li>
+              </ul>
             </div>
-            <div class="cv-date">May 2026</div>
-          </div>
 
-          <div class="cv-row" data-id="pub-sacred-civics" data-visible="true">
-            <div class="cv-content">
-              <span class="cv-title">Co-author</span>, "Reconciling Relationships with the Land Through Land Acknowledgments" with Dr. Deb McGregor in <em>Sacred Civics</em>
+            <div class="cv-exp-entry">
+              <div class="cv-exp-title-line"><span class="cv-exp-role">Teaching assistant</span> — Dalhousie University</div>
+              <span class="cv-exp-date">September 2025 – ongoing</span>
+              <ul class="cv-exp-bullets">
+                <li>Grading and advising for 2000 and 3000-level courses</li>
+              </ul>
             </div>
-            <div class="cv-date">May 2022</div>
-          </div>
 
-          <div class="cv-row" data-id="pub-container-gardening" data-visible="true">
-            <div class="cv-content">
-              <span class="cv-title">Author</span>, <em>Container Gardening: A How-to</em> (self published) —
-              <a href="https://bingardening.square.site">bingardening.square.site</a>
+            <div class="cv-exp-entry">
+              <div class="cv-exp-title-line"><span class="cv-exp-role">Writing tutor</span> — Dalhousie University Writing Centre</div>
+              <span class="cv-exp-date">September 2025 – ongoing</span>
+              <ul class="cv-exp-bullets">
+                <li>Drafting, grammar, clarity, and copyediting assistance</li>
+              </ul>
             </div>
-            <div class="cv-date">Jul 2021</div>
-          </div>
 
-          <div class="cv-row" data-id="pub-podcast" data-visible="true">
-            <div class="cv-content">
-              <span class="cv-title">Producer</span>, <em>Planning Through Land Acknowledgments</em> (Master's thesis podcast) —
-              <a href="https://anchor.fm/emnelson">anchor.fm/emnelson</a>
+            <div class="cv-exp-entry">
+              <div class="cv-exp-title-line"><span class="cv-exp-role">Owner-operator</span> — Cardamom Pod Cafe</div>
+              <span class="cv-exp-date">January 2023 – August 2025</span>
+              <ul class="cv-exp-bullets">
+                <li>Small cafe located in Pugwash, NS</li>
+                <li>Baker, barista, and social media manager</li>
+              </ul>
             </div>
-            <div class="cv-date">Aug 2020</div>
-          </div>
 
-          <div class="cv-row" data-id="pub-guest-lecturer" data-visible="true">
-            <div class="cv-content">
-              <span class="cv-title">Guest lecturer</span>, "Understanding Land Acknowledgments," various conferences and university courses
+            <div class="cv-exp-entry">
+              <div class="cv-exp-title-line"><span class="cv-exp-role">Research assistant</span> — York University</div>
+              <span class="cv-exp-date">July – Dec 2020</span>
+              <ul class="cv-exp-bullets">
+                <li>Created database of land transfers between Indigenous nations and the Crown between 1790–mid 1900s</li>
+                <li>Mapped findings using GIS to show the development of Canada as dependent on the degradation of Indigenous land holdings</li>
+              </ul>
             </div>
-            <div class="cv-date">Aug 2020–ongoing</div>
-          </div>
 
-          <div class="cv-row" data-id="pub-cummer-lodge" data-visible="true">
-            <div class="cv-content">
-              <span class="cv-title">Co-author</span>, co-presenter, "Cummer Lodge as a Place of Employment," York University
+            <div class="cv-exp-entry">
+              <div class="cv-exp-title-line"><span class="cv-exp-role">Research assistant</span> — York University</div>
+              <span class="cv-exp-date">Feb – Oct 2020</span>
+              <ul class="cv-exp-bullets">
+                <li>Supported by SSHRC Partnership Engage</li>
+                <li>Joint project with City of Toronto's Shelter, Support, and Housing Administration</li>
+                <li>Interviewed international experts and service providers on difficulties with public engagement when introducing new shelters</li>
+              </ul>
             </div>
-            <div class="cv-date">Apr 2020</div>
-          </div>
+          </section>
 
-          <div class="cv-row" data-id="pub-nyc-toronto" data-visible="true">
-            <div class="cv-content">
-              <span class="cv-title">Co-author</span>, "NYC and Toronto: From Mega-Projects to Activism and Resistance," York University
+          <!-- Presentations & Publications -->
+          <section class="cv-col-section">
+            <h3 class="cv-col-heading">Presentations &amp; Publications</h3>
+
+            <div class="cv-pub-entry">
+              <span class="cv-pub-role">Presenter</span> CSA, "'Return of the 'Radical': How the history of Nova Scotian midwifery can inform feminist organizing"
+              <span class="cv-pub-date">June 2026</span>
             </div>
-            <div class="cv-date">Oct 2019</div>
-          </div>
 
-          <div class="cv-row" data-id="pub-legal-observing" data-visible="true">
-            <div class="cv-content">
-              <span class="cv-title">Presenter</span>, "Legal Observing and Activism," Law Union of Ontario Conference
+            <div class="cv-pub-entry">
+              <span class="cv-pub-role">Presenter</span> CSA, "Mapping Memories: An interactive method to recover, visualize, and celebrate midwifery's history in Nova Scotia"
+              <span class="cv-pub-date">June 2026</span>
             </div>
-            <div class="cv-date">Oct 2019</div>
-          </div>
 
-        </div>
-      </div>
+            <div class="cv-pub-entry">
+              <span class="cv-pub-role">Presenter</span> CASCA, "Is there a place for contemplative practice in anthropology? On silence, listening, and hearing in the field"
+              <span class="cv-pub-date">June 2026</span>
+            </div>
 
-      <!-- ── COMPUTER SKILLS ── -->
-      <div class="cv-section">
-        <div class="cv-section-label">Computer Skills</div>
-        <div class="cv-list-entries">
+            <div class="cv-pub-entry">
+              <span class="cv-pub-role">Co-author</span> "Reconciling Relationships with the Land Through Land Acknowledgments" with Dr. Deborah McGregor in <em>Sacred Civics</em>
+              <span class="cv-pub-date">May 2022</span>
+            </div>
 
-          <div class="cv-list-row half" data-id="cs-stata"        data-visible="true">Stata 18</div>
-          <div class="cv-list-row half" data-id="cs-qgis"         data-visible="true">QGIS</div>
-          <div class="cv-list-row half" data-id="cs-google-suite" data-visible="true">Google Suite</div>
-          <div class="cv-list-row half" data-id="cs-indesign"     data-visible="true">InDesign</div>
-          <div class="cv-list-row half" data-id="cs-photoshop"    data-visible="true">Photoshop</div>
-          <div class="cv-list-row half" data-id="cs-social-media" data-visible="true">Social media management (major platforms)</div>
-          <div class="cv-list-row half" data-id="cs-web-design"   data-visible="true">Website design (Wordpress.com, Wix, Weebly)</div>
-          <div class="cv-list-row half" data-id="cs-ecommerce"    data-visible="true">eCommerce management</div>
-          <div class="cv-list-row half" data-id="cs-canva"        data-visible="true">Canva</div>
-          <div class="cv-list-row half" data-id="cs-ms-suite"     data-visible="true">Microsoft Suite, intermediate Excel user</div>
-          <div class="cv-list-row half" data-id="cs-quickbooks"   data-visible="true">Quickbooks</div>
-          <div class="cv-list-row half" data-id="cs-audacity"     data-visible="true">Audacity/Garage Band</div>
-          <div class="cv-list-row half" data-id="cs-davinci"      data-visible="true">DaVinci Resolve/iMovie</div>
+            <div class="cv-pub-entry">
+              <span class="cv-pub-role">Author</span> <a href="https://bingardening.square.site" target="_blank" rel="noopener"><em>Container gardening: A how-to</em></a> (self-published)
+              <span class="cv-pub-date">Jul 2021</span>
+            </div>
 
-        </div>
-      </div>
+            <div class="cv-pub-entry">
+              <span class="cv-pub-role">Producer</span> <a href="https://anchor.fm/emnelson" target="_blank" rel="noopener"><em>Planning through land acknowledgments</em></a> (podcast)
+              <span class="cv-pub-date">Aug 2020</span>
+            </div>
 
-      <!-- ── SKILLS ── -->
-      <div class="cv-section">
-        <div class="cv-section-label">Skills</div>
-        <div class="cv-list-entries">
+            <div class="cv-pub-entry">
+              <span class="cv-pub-role">Guest lecturer</span> Several conferences and university courses, "Understanding land acknowledgments"
+              <span class="cv-pub-date">Aug 2020–May 2024</span>
+            </div>
 
-          <div class="cv-list-row" data-id="sk-communication" data-visible="true">Excellent communication, verbal and written</div>
-          <div class="cv-list-row" data-id="sk-editor"        data-visible="true">Trained editor</div>
-          <div class="cv-list-row" data-id="sk-interviewer"   data-visible="true">Experienced interviewer and notetaker</div>
-          <div class="cv-list-row" data-id="sk-multitasking"  data-visible="true">Multi-tasking and handling high levels of responsibility/fast-paced environments</div>
-          <div class="cv-list-row" data-id="sk-visuals"       data-visible="true">Designing visuals (graphic design, fibre art)</div>
-          <div class="cv-list-row" data-id="sk-independent"   data-visible="true">Confident independent worker</div>
-          <div class="cv-list-row" data-id="sk-team"          data-visible="true">Compassionate team player</div>
-          <div class="cv-list-row" data-id="sk-creative"      data-visible="true">Creative thinker</div>
-          <div class="cv-list-row" data-id="sk-languages-note" data-visible="false">
-            <em>I intend to become fluent in French by late 2026 and am interested in attending lessons to learn Mi'kmaw'simk.</em>
-          </div>
+            <div class="cv-pub-entry">
+              <span class="cv-pub-role">Co-author</span> York University, "Understanding Cummer Lodge as a place of employment"
+              <span class="cv-pub-date">Apr 2020</span>
+            </div>
 
-        </div>
-      </div>
+            <div class="cv-pub-entry">
+              <span class="cv-pub-role">Co-author</span> York University, "NYC and Toronto: From mega-projects to activism and resistance"
+              <span class="cv-pub-date">Oct 2019</span>
+            </div>
+
+            <div class="cv-pub-entry">
+              <span class="cv-pub-role">Presenter</span> Law Union of Ontario Conference, "Legal observing and activism"
+              <span class="cv-pub-date">Oct 2019</span>
+            </div>
+          </section>
+
+          <!-- Extracurricular -->
+          <section class="cv-col-section">
+            <h3 class="cv-col-heading">Extracurricular</h3>
+
+            <div class="cv-exp-entry">
+              <div class="cv-exp-title-line"><span class="cv-exp-role">OpenThinker</span> — OpenThink 2026 cohort, Dalhousie University</div>
+              <span class="cv-exp-date">2026 – 2027</span>
+              <ul class="cv-exp-bullets">
+                <li>Competitively selected, stipended programme designed to help early-career scholars develop a public following for their research</li>
+                <li>Received media training</li>
+              </ul>
+            </div>
+
+            <div class="cv-exp-entry">
+              <div class="cv-exp-title-line"><span class="cv-exp-role">Student Concerns Subcommittee, Eastern Rep</span> — Canadian Sociological Association</div>
+              <span class="cv-exp-date">2026 – 2029</span>
+              <ul class="cv-exp-bullets">
+                <li>Elected for 3-year term</li>
+              </ul>
+            </div>
+
+            <div class="cv-exp-entry">
+              <div class="cv-exp-title-line"><span class="cv-exp-role">Trained birth doula</span> — Sista Midwife Productions</div>
+              <span class="cv-exp-date">2020 – current</span>
+            </div>
+          </section>
+
+        </div><!-- end cv-col-right -->
+      </div><!-- end cv-body -->
 
     </div><!-- end #cv-paper -->
   </div><!-- end .cv-page -->
@@ -896,11 +907,10 @@
   <!-- FOOTER -->
   <footer>
     <p class="footer-name">Emma Nelson</p>
-    <p class="footer-note">PhD Candidate · Sociology · Dalhousie University</p>
+    <p class="footer-note">PhD Student · Sociology · Dalhousie University</p>
   </footer>
 
   <script>
-    /* THEME — identical to index */
     const html = document.documentElement;
     const PREF = window.matchMedia('(prefers-color-scheme: dark)');
 
@@ -919,7 +929,6 @@
       if (!localStorage.getItem('theme')) setTheme(e.matches);
     });
 
-    /* NAV CLOSE on mobile */
     document.querySelectorAll('#nl a').forEach(a =>
       a.addEventListener('click', () => document.getElementById('nl').classList.remove('open')));
   </script>

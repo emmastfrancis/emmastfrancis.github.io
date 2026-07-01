@@ -7,7 +7,13 @@
       "Bash(/home/emmastf/Projects/emmastfrancis.github.io/project-tracker/.venv/bin/pip install *)",
       "Bash(.venv/bin/python app.py)",
       "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:5000/)",
-      "Bash(kill %1)"
+      "Bash(kill %1)",
+      "Bash(command -v chromium chromium-browser google-chrome wkhtmltopdf)",
+      "Bash(npx --version)",
+      "Bash(pip3 show *)",
+      "Bash(firefox --version)",
+      "Read(//usr/bin/**)",
+      "Bash(firefox --headless --print-to-pdf=/tmp/test.pdf --no-sandbox file:///home/emmastf/Projects/emmastfrancis.github.io/cv-page.html)"
     ]
   }
 }
